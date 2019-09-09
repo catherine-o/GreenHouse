@@ -1,0 +1,34 @@
+#nav-bar {
+    background-color: rgb(52, 32, 161) !important;
+}
+
+
+.page-title {
+    margin: 10px 20px;
+}
+
+.post-card {
+    width: 350px;
+    height: 225px;
+    margin: 15px;
+    border: 1px black;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 5px;
+    box-shadow: 5px 5px 8px rgb(71, 77, 71);
+}
+
+.post-card h5 {
+    background-color: rgb(153, 226, 165);
+    padding: 10px;
+}
+
+.post-card p {
+    padding: 10px;
+    font-size: 13px;
+}
+
+#post-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
