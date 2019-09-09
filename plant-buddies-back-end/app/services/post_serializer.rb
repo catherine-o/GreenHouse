@@ -1,0 +1,3 @@
+class PostSerializer
+
+end
