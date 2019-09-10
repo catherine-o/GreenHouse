@@ -1,9 +1,9 @@
 const postsURL = 'http://localhost:3000/posts/'
+const foliageURL = 'https://www.thegardenglove.com/wp-content/uploads/2014/05/img_0585.jpg'
 
 const navList = document.querySelector('#nav-ul')
 const browsePage = document.querySelector('#show-posts')
 const createPage = document.querySelector('#create-post')
-// const newPostButton = document.querySelector('#submit-post')
 const createPostForm = document.querySelector('#create-post-form')
 const postModal = document.querySelector('.modal')
 const closeModalButton = document.querySelector('.modalCloseButton')
@@ -30,11 +30,16 @@ const renderCard = (post) => {
     card.setAttribute('data-id', `${post.id}`)
     card.classList.add('post-card')
     const cardTitle = document.createElement('h5')
-    cardTitle.innerText = post.title 
+    cardTitle.innerText = post.title
     card.appendChild(cardTitle)
-    const cardInfo = document.createElement('p')
-    cardInfo.innerText = post.description
-    card.appendChild(cardInfo)
+    // const cardInfo = document.createElement('p')
+    // cardInfo.innerText = post.description
+    // card.appendChild(cardInfo)
+    const cardImg = document.createElement('img')
+    cardImg.classList.add('card-image')
+    cardImg.src = foliageURL
+    
+    card.appendChild(cardImg)
     postArea.appendChild(card)
     addCardEvent(card)
     // browsePage.style.display='none'
@@ -54,8 +59,14 @@ const openModal = () => {
     } else if (event.target.tagName === 'H5'){
         cardID = event.target.parentNode.dataset.id
     }
-    addCloseEvents()
     renderModalText(cardID)
+    addCloseEvents()
+}
+
+const renderModalText = (cardID) => {
+    const modalCard = document.querySelector(`[data-id="${cardID}"]`)
+    console.log(modalCard)
+    // modalHeader.innerText = 
 }
 
 const addCloseEvents = () => {
