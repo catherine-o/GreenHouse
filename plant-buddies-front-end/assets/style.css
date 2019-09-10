@@ -6,11 +6,28 @@
     margin: 10px 20px;
 }
 
+.modal {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
 .modal-content {
     height: 50%;
     width: 80%;
     margin: auto;
     margin-top: 8%;
+    padding: 10px;
+    /* overflow: auto; */
+    box-shadow: 3px 3px 10px rgba(71, 77, 71, 0.75);
+    animation-name: modalopen;
+    animation-duration: 0.5s;
+}
+
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+.modal-content p {
     padding: 5px;
 }
 
@@ -25,10 +42,16 @@
     border-radius: 2px;
     height: 30px;
     width: 30px;
+    /* margin: 5px; */
 }
 
 .modalCloseButton:hover {
     background-color:  rgb(101, 88, 175);
+}
+
+.modal-footer {
+    height: 5px;
+    background-color:  rgb(162, 150, 228);
 }
 
 #show-posts {
@@ -45,12 +68,12 @@
     border-radius: 2px;
     padding: 5px;
     box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.30);
-    transition: transform 2s;
+    /* transition: transform 2s; */
 }
 
-.post-card:hover {
+/* .post-card:hover {
     transform: scale(1.05)
-}
+} */
 
 .post-card h5 {
     background-color: rgb(153, 226, 165);

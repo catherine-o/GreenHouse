@@ -7,6 +7,7 @@ const createPage = document.querySelector('#create-post')
 const createPostForm = document.querySelector('#create-post-form')
 const postModal = document.querySelector('.modal')
 const closeModalButton = document.querySelector('.modalCloseButton')
+const modalHeader = document.querySelector('.modal-header').lastElementChild
 
 const renderBrowse = () => {
     addNavEvent()
@@ -40,31 +41,39 @@ const renderCard = (post) => {
 }
 
 const addCardEvent = (card) => {
-    console.log(card)
     card.addEventListener('click', openModal)
 }
 
 const openModal = () => {
+    let cardID = ''
+    postModal.style.display = 'block'
     if(event.target.tagName === 'DIV'){
-        console.log(event.target)
-        postModal.style.display = 'block'
+        cardID = event.target.dataset.id
     } else if (event.target.tagName === 'P'){
-        console.log(event.target.parentNode)
-        postModal.style.display = 'block'
+        cardID = event.target.parentNode.dataset.id
     } else if (event.target.tagName === 'H5'){
-        console.log(event.target.parentNode)
-        postModal.style.display = 'block'
+        cardID = event.target.parentNode.dataset.id
     }
-    addCloseEvent()
+    addCloseEvents()
+    renderModalText(cardID)
 }
 
-const addCloseEvent = () => {
+const addCloseEvents = () => {
     closeModalButton.addEventListener('click', closeModal)
+    window.addEventListener('click', clickOutsideModal)
 }
 
 const closeModal = () => {
     postModal.style.display = 'none'
 }
+
+function clickOutsideModal(e){
+    if (e.target === postModal) {
+        postModal.style.display = 'none'
+    }
+}
+
+
 
 const addNavEvent = () => {
     navList.addEventListener('click', switchPage)
