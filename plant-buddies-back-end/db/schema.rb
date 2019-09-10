@@ -22,12 +22,9 @@ ActiveRecord::Schema.define(version: 2019_09_09_184242) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "details"
     t.string "location"
-    t.integer "home_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["home_id"], name: "index_posts_on_home_id"
   end
 
 end

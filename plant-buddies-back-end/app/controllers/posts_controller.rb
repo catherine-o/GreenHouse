@@ -12,12 +12,12 @@ class PostsController < ApplicationController
 
     def create
         post = Post.create(post_params)
-        render json: post
-        # if post.save
-        #     render json: post
-        # # else
-        # #     puts post_params
-        # end
+        # render json: post
+        if post.save
+            render json: post
+        else
+            binding.pry
+        end
     end
 
     private
