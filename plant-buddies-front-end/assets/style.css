@@ -2,13 +2,38 @@
     background-color: rgb(52, 32, 161) !important;
 }
 
-
 .page-title {
     margin: 10px 20px;
 }
 
+.modal-content {
+    height: 50%;
+    width: 80%;
+    margin: auto;
+    margin-top: 8%;
+    padding: 5px;
+}
+
+.modalCloseButton {
+    font-size: 20pt;
+    text-align: center;
+    line-height: 25px;
+    background-color:  rgb(162, 150, 228);
+    /* box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20); */
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 2px;
+    height: 30px;
+    width: 30px;
+}
+
+.modalCloseButton:hover {
+    background-color:  rgb(101, 88, 175);
+}
+
 #show-posts {
-    display: inline-block;
+    /* display: inline-block; */
+    display: 'none';
 }
 
 .post-card {
@@ -19,7 +44,12 @@
     border-style: solid;
     border-radius: 2px;
     padding: 5px;
-    box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.30)
+    box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.30);
+    transition: transform 2s;
+}
+
+.post-card:hover {
+    transform: scale(1.05)
 }
 
 .post-card h5 {

@@ -5,6 +5,8 @@ const browsePage = document.querySelector('#show-posts')
 const createPage = document.querySelector('#create-post')
 // const newPostButton = document.querySelector('#submit-post')
 const createPostForm = document.querySelector('#create-post-form')
+const postModal = document.querySelector('.modal')
+const closeModalButton = document.querySelector('.modalCloseButton')
 
 const renderBrowse = () => {
     addNavEvent()
@@ -24,6 +26,7 @@ const listPosts = (posts) => {
 const renderCard = (post) => {
     const postArea = document.querySelector('#post-grid')
     const card = document.createElement('div')
+    card.setAttribute('data-id', `${post.id}`)
     card.classList.add('post-card')
     const cardTitle = document.createElement('h5')
     cardTitle.innerText = post.title 
@@ -32,8 +35,35 @@ const renderCard = (post) => {
     cardInfo.innerText = post.description
     card.appendChild(cardInfo)
     postArea.appendChild(card)
-    // browsePage.style.display = 'block'
-    // createPage.style.display = 'block'
+    addCardEvent(card)
+    // browsePage.style.display='none'
+}
+
+const addCardEvent = (card) => {
+    console.log(card)
+    card.addEventListener('click', openModal)
+}
+
+const openModal = () => {
+    if(event.target.tagName === 'DIV'){
+        console.log(event.target)
+        postModal.style.display = 'block'
+    } else if (event.target.tagName === 'P'){
+        console.log(event.target.parentNode)
+        postModal.style.display = 'block'
+    } else if (event.target.tagName === 'H5'){
+        console.log(event.target.parentNode)
+        postModal.style.display = 'block'
+    }
+    addCloseEvent()
+}
+
+const addCloseEvent = () => {
+    closeModalButton.addEventListener('click', closeModal)
+}
+
+const closeModal = () => {
+    postModal.style.display = 'none'
 }
 
 const addNavEvent = () => {
