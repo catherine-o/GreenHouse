@@ -14,24 +14,25 @@
 
     <!-- NAV -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav-bar">
-        <a class="navbar-brand" href="#">Plant</a>
+        <a class="navbar-brand" href="#">Plant Buddies ♡</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        
       
         <div class="collapse navbar-collapse" id="navbarColor02">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <ul class="navbar-nav mr-auto" id="nav-ul">
+            <li class="nav-item">
+                <a class="nav-link" id="browse">Browse</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" id="create">Create</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Create</a>
+              <a class="nav-link" id="account">Account</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Find</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" id="about">About</a>
             </li>
           </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -41,13 +42,59 @@
     </div>
     </nav>
 
-    <!-- SHOW POSTS -->
-    <div id="show-posts">
-        <h2 class="page-title">Browse posts:</h2>
-        <div id="post-grid">
-            <!-- Posts go here-->
+    <main>
+
+      <!-- SHOW POSTS -->
+      <div id="show-posts">
+          <!-- <h2 class="page-title">Browse posts:</h2> -->
+          <div id="post-grid">
+              <!-- Posts go here-->
+          </div>
+
+          <!-- <div>
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#">&laquo;</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">4</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">5</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">&raquo;</a>
+                </li>
+              </ul>
+            </div> -->
+      </div>
+
+
+      <!-- CREATE POST -->
+      <div id="create-post">
+        <h2 class="page-title">Create new post:</h2>
+        <div class="form-group">
+          <form name="create-post-form">
+            <label for="post-title">Title</label>
+            <input type="text" class="form-control" id="post-title" placeholder="Enter Text">
+            <label for="post-description">Description</label>
+            <textarea class="form-control" id="post-description" rows="3"></textarea>
+            <button type="submit" class="btn btn-primary" id="submit-post">Submit</button>
+          </form>
         </div>
-    </div>
+
+      </div>
+
+  </main>
 
 
 

@@ -9,5 +9,10 @@ class PostsController < ApplicationController
         post = Post.find_by(id: params[:id])
         render json: post
     end
+
+    def create
+        post = Post.create(title: postTitle, description: postDescription)
+        render json: post
+    end
     
 end
