@@ -4,7 +4,7 @@ const navList = document.querySelector('#nav-ul')
 const browsePage = document.querySelector('#show-posts')
 const createPage = document.querySelector('#create-post')
 // const newPostButton = document.querySelector('#submit-post')
-const createPostForm = document.getElementsByName('create-post-form')
+const createPostForm = document.querySelector('#create-post-form')
 
 const renderBrowse = () => {
     addNavEvent()
@@ -58,11 +58,18 @@ const addCreateEvent = () => {
 }
 
 const createNewPost = () => {
+    event.preventDefault()
+    const formData = new FormData(event.target)
     const postTitle = formData.get("post-title")
     const postDescription = formData.get("post-description")
     const config = {
         method: 'POST', 
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            // "Access-Control-Allow-Origin": "*", 
+            // "Access-Control-Allow-Credentials": true 
+        },
         body: JSON.stringify({
             'title': postTitle,
             'description': postDescription
@@ -70,7 +77,16 @@ const createNewPost = () => {
     }
     fetch(postsURL, config)
         .then(response => response.json())
-        .then(obj => console.log(obj))
+        // .then(res => console.log(res))
+        .then(createCardFromForm)
+        // .then(post => renderBrowse(post))
+        // .then(post => renderCard(post))
+}
+
+const createCardFromForm = (post) => {
+    browsePage.style.display = 'block'
+    createPage.style.display = 'none'
+    renderCard(post)
 }
 
 
