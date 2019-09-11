@@ -5,6 +5,8 @@ const navList = document.querySelector('#nav-ul')
 const browsePage = document.querySelector('#show-posts')
 const createPage = document.querySelector('#create-post')
 const createPostForm = document.querySelector('#create-post-form')
+const editPage = document.querySelector('#edit-post')
+const editPostForm = document.querySelector('#edit-post-form')
 const postModal = document.querySelector('.modal')
 const closeModalButton = document.querySelector('.modalCloseButton')
 const modalHeader = document.querySelector('.modal-header').lastElementChild
@@ -77,7 +79,7 @@ const openModal = () => {
         cardID = event.target.parentNode.dataset.id
     }
     renderModalText(cardID)
-    addCloseEvents()
+    addModalEvents()
 }
 
 const renderModalText = (cardID) => {
@@ -96,9 +98,10 @@ const renderModalText = (cardID) => {
     modalImage.classList.add('modal-image')
 }
 
-const addCloseEvents = () => {
+const addModalEvents = () => {
     closeModalButton.addEventListener('click', closeModal)
     window.addEventListener('click', clickOutsideModal)
+    editPostButton.addEventListener('click', editPost)
 }
 
 const closeModal = () => {
@@ -111,7 +114,11 @@ function clickOutsideModal(e){
     }
 }
 
-
+function editPost(){
+    browsePage.style.display = 'none'
+    editPage.style.display = 'block'
+    postModal.style.display = 'none'
+}
 
 const addNavEvent = () => {
     navList.addEventListener('click', switchPage)

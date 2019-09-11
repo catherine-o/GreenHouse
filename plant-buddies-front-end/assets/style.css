@@ -208,6 +208,10 @@
     display: none;
 }
 
+#edit-post {
+    display: none;
+}
+
 .form-group {
     padding: 30px;
 }
