@@ -5,6 +5,8 @@ const navList = document.querySelector('#nav-ul')
 const browsePage = document.querySelector('#show-posts')
 const createPage = document.querySelector('#create-post')
 const createPostForm = document.querySelector('#create-post-form')
+const editPage = document.querySelector('#edit-post')
+const editPostForm = document.querySelector('#edit-post-form')
 const postModal = document.querySelector('.modal')
 const closeModalButton = document.querySelector('.modalCloseButton')
 const modalHeader = document.querySelector('.modal-header').lastElementChild
@@ -13,6 +15,8 @@ const modalLocation = modalBody.firstElementChild
 const modalDescription = modalBody.children[1]
 const modalImage = document.querySelector('.modal-image')
 const contactButton = document.querySelector('.modal-contact-button')
+const editPostButton = document.querySelector('.modal-edit-button')
+const deletePostButton = document.querySelector('.modal-delete-button')
 
 
 const renderBrowse = () => {
@@ -75,7 +79,7 @@ const openModal = () => {
         cardID = event.target.parentNode.dataset.id
     }
     renderModalText(cardID)
-    addCloseEvents()
+    addModalEvents()
 }
 
 const renderModalText = (cardID) => {
@@ -94,9 +98,10 @@ const renderModalText = (cardID) => {
     modalImage.classList.add('modal-image')
 }
 
-const addCloseEvents = () => {
+const addModalEvents = () => {
     closeModalButton.addEventListener('click', closeModal)
     window.addEventListener('click', clickOutsideModal)
+    editPostButton.addEventListener('click', editPost)
 }
 
 const closeModal = () => {
@@ -109,7 +114,11 @@ function clickOutsideModal(e){
     }
 }
 
-
+function editPost(){
+    browsePage.style.display = 'none'
+    editPage.style.display = 'block'
+    postModal.style.display = 'none'
+}
 
 const addNavEvent = () => {
     navList.addEventListener('click', switchPage)
@@ -125,6 +134,9 @@ const switchPage = () => {
         createPage.style.display = 'block'
         browsePage.style.display = 'none'
         addCreateEvent()
+    } else if (id === 'login'){
+        createPage.style.display = 'none'
+        browsePage.style.display = 'none'
     }
 }
 

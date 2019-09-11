@@ -29,10 +29,10 @@
               <a class="nav-link" id="create">Create</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="account">Account</a>
+              <a class="nav-link" id="about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="about">About</a>
+              <a class="nav-link" id="login">Login</a>
             </li>
           </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -75,6 +75,23 @@
         </div>
       </div>
 
+
+      <!-- EDIT POST -->
+      <div id="edit-post">
+          <h2 class="page-title">Edit post:</h2>
+          <div class="form-group">
+            <form id="edit-post-form">
+              <label for="post-title">Title</label>
+              <input type="text" class="form-control" name="post-title" placeholder="Enter Text">
+              <label class="col-form-label" for="post-location">Location</label>
+              <input type="text" class="form-control" placeholder="Location" name="post-location">
+              <label for="post-description">Description</label>
+              <textarea class="form-control" name="post-description" rows="3"></textarea>
+              <button type="submit" class="btn btn-primary" id="submit-post">Update</button>
+            </form>
+          </div>
+        </div>
+
       
   </main>
 
@@ -90,15 +107,23 @@
             <h5 id="modal-location">Location</h5>
             <p id="modal-description">Description</p>
             <div class="modal-right">
-              <img class="modal-image" src="">
+              <div class="modal-image-container"><img class="modal-image" src=""></div>
+              
               <button type="button" class="modal-contact-button">Contact</button>
+              <button type="button" class="modal-edit-button">Edit</button>
+              <button type="button" class="modal-delete-button">Delete</button>
             </div>
           </div>
-          <div class="modal-footer">
-            <h4></h4>
-          </div>
+        <div class="modal-footer">
+          <h4></h4>
         </div>
       </div>
+    </div>
+
+
+    <!-- LOGIN PAGE -->
+  
+
 
 
 
