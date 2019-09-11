@@ -1,5 +1,24 @@
 const postsURL = 'http://localhost:3000/posts/'
-const foliageURL = 'https://www.thegardenglove.com/wp-content/uploads/2014/05/img_0585.jpg'
+// const foliageURL = 'https://www.thegardenglove.com/wp-content/uploads/2014/05/img_0585.jpg'
+const leafs1 = 'assets/images/leafs1.jpeg'
+const leafs2 = 'assets/images/leafs2.jpeg'
+const leafs3 = 'assets/images/leafs3.jpeg'
+const foliage1 = 'assets/images/foliage1.jpg'
+const foliage2 = 'assets/images/foliage2.jpg'
+const foliage3 = 'assets/images/foliage3.jpg'
+const flower1 = 'assets/images/flower1.jpg'
+const flower2 = 'assets/images/flower2.jpg'
+const garden1 = 'assets/images/garden1.jpg'
+const garden2 = 'assets/images/garden2.jpg'
+const garden3 = 'assets/images/garden3.jpg'
+const indoor1 = 'assets/images/indoor1.jpg'
+const indoor2 = 'assets/images/indoor2.jpg'
+const indoor3 = 'assets/images/indoor3.jpg'
+const indoor4 = 'assets/images/indoor4.jpg'
+const indoor5 = 'assets/images/indoor5.jpg'
+const patio1 = 'assets/images/patio1.jpg'
+const patio2 = 'assets/images/patio2.jpg'
+const plantImages = [leafs1, leafs2, leafs3, foliage1, foliage2, foliage3, flower1, flower2, garden1, garden2, garden3, indoor1, indoor2, indoor3, indoor4, indoor5, patio1, patio2]
 
 const navList = document.querySelector('#nav-ul')
 const browsePage = document.querySelector('#show-posts')
@@ -54,12 +73,21 @@ const renderCard = (post) => {
 
     const cardImg = document.createElement('img')
     cardImg.classList.add('card-image')
-    cardImg.src = foliageURL
+    cardImg.src = getRandomImage(plantImages, 'assets/images')
     
     card.appendChild(cardImg)
     postArea.appendChild(card)
     addCardEvent(card)
     // browsePage.style.display='none'
+}
+
+function getRandomImage(imgAr, path) {
+    path = path || 'images/'; // default path here
+    var num = Math.floor( Math.random() * imgAr.length );
+    var img = imgAr[ num ];
+    // var imgStr = '<img src="' + path + img + '" alt = "">';
+    // document.write(imgStr); document.close();
+    return img
 }
 
 const addCardEvent = (card) => {

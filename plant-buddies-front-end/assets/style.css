@@ -58,7 +58,7 @@
 
 .modal-image {
     max-width: 100%;
-    max-height: 80%;
+    height: 275px;
     margin-left: 10px;
     object-fit: cover;
     display: block;
