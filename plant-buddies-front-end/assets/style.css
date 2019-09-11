@@ -23,7 +23,7 @@
     /* overflow: auto; */
     box-shadow: 3px 3px 10px rgba(71, 77, 71, 0.75);
     animation-name: modalopen;
-    animation-duration: 0.5s;
+    animation-duration: 0.60s;
 }
 
 @keyframes modalopen {
@@ -214,5 +214,9 @@
 }
 
 #submit-post {
+    margin: 10px 5px;
+}
+
+#update-post {
     margin: 10px 5px;
 }
