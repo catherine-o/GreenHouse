@@ -35,6 +35,7 @@ const modalDescription = modalBody.children[1]
 const modalImage = document.querySelector('.modal-image')
 const contactButton = document.querySelector('.modal-contact-button')
 const editPostButton = document.querySelector('.modal-edit-button')
+const modalRight = document.querySelector('.modal-right')
 const deletePostButton = document.querySelector('.modal-delete-button')
 
 
@@ -44,9 +45,6 @@ const renderBrowse = () => {
 }
 
 const getPosts = () => {
-    // browsePage.style.display= 'block'
-    // createPage.style.display = 'none'
-    // editPage.style.display = 'none'
     fetch(postsURL)
         .then(response => response.json())
         .then(listPosts)
@@ -66,8 +64,6 @@ const renderCard = (post) => {
     const cardTitle = document.createElement('h5')
     cardTitle.innerText = post.title
     card.appendChild(cardTitle)
-
-    const cardLocation = document.createElement
 
     const cardInfo = document.createElement('p')
     cardInfo.innerText = post.description
@@ -125,35 +121,60 @@ const renderModalText = (cardID) => {
     modalDescription.innerText = modalCard.children[1].innerText
     modalImage.src = modalCard.children[2].src
     modalImage.classList.add('modal-image')
+
+
+    deletePostButton.setAttribute('data-delete-id', cardID)
+
 }
+
 
 const addModalEvents = () => {
     closeModalButton.addEventListener('click', closeModal)
     window.addEventListener('click', clickOutsideModal)
     editPostButton.addEventListener('click', renderPostEdit)
+    deletePostButton.addEventListener('click', switchButton)
 }
 
 const closeModal = () => {
+    const byeConfirm = document.querySelector('.modal-confirm-button')
+    byeConfirm.remove()
+    deletePostButton.style.display = 'inline-block'
     postModal.style.display = 'none'
 }
 
 function clickOutsideModal(e){
     if (e.target === postModal) {
-        postModal.style.display = 'none'
+        closeModal()
     }
 }
 
+const switchButton = () => {
+    event.target.style.display = 'none'
+    const confirmDeleteButton = createConfirmButton()
+    event.target.parentNode.appendChild(confirmDeleteButton)
+    confirmDeleteButton.addEventListener('click', deletePost)
+}
+
+const createConfirmButton = () => {
+    const confirmDeleteButton = document.createElement('button')
+    confirmDeleteButton.innerText = 'Confirm'
+    confirmDeleteButton.classList.add('modal-confirm-button')
+    return confirmDeleteButton
+}
+
+const deletePost = () => {
+    const deleteID = event.target.parentNode.parentNode.dataset.postId
+    fetch(postsURL + deleteID, {method: 'DELETE'})
+        .then(document.location.reload())
+}
+
 function renderPostEdit(){
-    const postContent = event.target.parentNode.parentNode.parentNode
-    // const editPostId = postContent.children[1].dataset.postId
-    
+    const postContent = event.target.parentNode.parentNode.parentNode    
     browsePage.style.display = 'none'
     editPage.style.display = 'block'
     postModal.style.display = 'none'
     prepopulateForm(postContent)
     addEditEvent()
-    // console.log(editPostId)
-    // editPost(editPostId)
 }
 
 const prepopulateForm = (info) => {
@@ -161,7 +182,7 @@ const prepopulateForm = (info) => {
     const editTitle = info.firstElementChild.lastElementChild.innerText
     const editLocation = info.children[1].firstElementChild.innerText
     const editDescription = info.children[1].children[1].innerText
-    // console.log(info)
+    
     editPostForm[0].value = editID
     editPostForm[1].value = editTitle
     editPostForm[2].value = editLocation
@@ -193,9 +214,7 @@ const editPost = () => {
             'description': editDescriptionData
         })
     }
-    console.log(editIdData)
     fetch(postsURL + editIdData, configEdit)
-        // .then(getPosts)
         .then(window.location.reload())
 }
 
@@ -243,10 +262,7 @@ const createNewPost = () => {
     }
     fetch(postsURL, configCreate)
         .then(response => response.json())
-        // .then(res => console.log(res))
         .then(createCardFromForm)
-        // .then(post => renderBrowse(post))
-        // .then(post => renderCard(post))
 }
 
 const createCardFromForm = (post) => {

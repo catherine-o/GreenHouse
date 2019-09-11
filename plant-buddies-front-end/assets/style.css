@@ -1,5 +1,5 @@
 #nav-bar {
-    background-color: rgb(73, 37, 170) !important;
+    background-color: rgb(92, 83, 141) !important;
 }
 
 .page-title {
@@ -19,8 +19,6 @@
     max-width: 70%;
     margin: auto;
     margin-top: 6%;
-    /* padding: 0px 10px 0px 0px; */
-    /* overflow: auto; */
     box-shadow: 3px 3px 10px rgba(71, 77, 71, 0.75);
     animation-name: modalopen;
     animation-duration: 0.60s;
@@ -35,8 +33,6 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
-    /* margin: auto; */
 }
 
 #modal-location {
@@ -72,7 +68,6 @@
     box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20);
     border-style: solid;
     border-width: 0.5px;
-    /* border-color: black; */
     border-radius: 2px;
     height: 30px;
     width: 80px;
@@ -91,7 +86,6 @@
     box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20);
     border-style: solid;
     border-width: 0.5px;
-    /* border-color: black; */
     border-radius: 2px;
     height: 30px;
     width: 80px;
@@ -109,13 +103,29 @@
     box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20);
     border-style: solid;
     border-width: 0.5px;
-    /* border-color: black; */
     border-radius: 2px;
     height: 30px;
     width: 80px;
 }
 
 .modal-delete-button:hover {
+    box-shadow: 0px 0px 0px;
+}
+
+.modal-confirm-button {
+    font-size: 12pt;
+    text-align: center;
+    line-height: 25px;
+    background-color:  rgb(250, 147, 87);
+    box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20);
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 2px;
+    height: 30px;
+    width: 80px;
+}
+
+.modal-confirm-button:hover {
     box-shadow: 0px 0px 0px;
 }
 
@@ -131,7 +141,6 @@
     border-radius: 2px;
     height: 30px;
     width: 30px;
-    /* margin: 5px; */
 }
 
 .modalCloseButton:hover {
@@ -139,13 +148,11 @@
 }
 
 .modal-footer {
-    
     height: 5px;
     background-color:  rgb(162, 150, 228);
 }
 
 #show-posts {
-    /* display: inline-block; */
     display: 'none';
 }
 
@@ -153,13 +160,8 @@
     width: 350px;
     height: 225px;
     margin: 15px;
-    /* border: 1px black;
-    border-style: solid;
-    border-radius: 2px; */
-    /* padding: 5px; */
     box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.678);
     position: relative;
-    /* background-color:  rgba(66, 86, 94, 0.705); */
     /* transition: transform 2s; */
 }
 
@@ -171,8 +173,6 @@
     background-color: rgba(153, 226, 165, 0.918);
     padding: 10px;
     max-width: 100%;
-    /* width: 97.5%; */
-    /* z-index: "2"; */
     position: absolute;
 }
 
@@ -182,14 +182,11 @@
 }
 
 .post-card img {
-    /* max-width: 100%;
-    max-height: 100%; */
     width: 350px;
     height: 225px;
     object-fit: cover;
     margin: auto;
     display: block;
-    /* z-index: '1'; */
 }
 
 #post-grid {
