@@ -23,7 +23,7 @@
     /* overflow: auto; */
     box-shadow: 3px 3px 10px rgba(71, 77, 71, 0.75);
     animation-name: modalopen;
-    animation-duration: 0.5s;
+    animation-duration: 0.60s;
 }
 
 @keyframes modalopen {
@@ -160,12 +160,12 @@
     box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.678);
     position: relative;
     /* background-color:  rgba(66, 86, 94, 0.705); */
-    /* transition: transform 2s; */
+    transition: transform 2s;
 }
 
-/* .post-card:hover {
+.post-card:hover {
     transform: scale(1.05)
-} */
+}
 
 .post-card h5 {
     background-color: rgba(153, 226, 165, 0.918);

@@ -176,6 +176,7 @@ const createNewPost = () => {
     event.preventDefault()
     const formData = new FormData(event.target)
     const postTitle = formData.get("post-title")
+    const postLocation = formData.get("post-location")
     const postDescription = formData.get("post-description")
     const config = {
         method: 'POST', 
@@ -187,6 +188,7 @@ const createNewPost = () => {
         },
         body: JSON.stringify({
             'title': postTitle,
+            'location': postLocation,
             'description': postDescription
         })
     }
