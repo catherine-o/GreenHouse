@@ -44,6 +44,9 @@ const renderBrowse = () => {
 }
 
 const getPosts = () => {
+    // browsePage.style.display= 'block'
+    // createPage.style.display = 'none'
+    // editPage.style.display = 'none'
     fetch(postsURL)
         .then(response => response.json())
         .then(listPosts)
@@ -192,6 +195,8 @@ const editPost = () => {
     }
     console.log(editIdData)
     fetch(postsURL + editIdData, configEdit)
+        // .then(getPosts)
+        .then(window.location.reload())
 }
 
 const addNavEvent = () => {
