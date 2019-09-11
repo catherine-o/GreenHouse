@@ -8,6 +8,12 @@ const createPostForm = document.querySelector('#create-post-form')
 const postModal = document.querySelector('.modal')
 const closeModalButton = document.querySelector('.modalCloseButton')
 const modalHeader = document.querySelector('.modal-header').lastElementChild
+const modalBody = document.querySelector('.modal-body')
+const modalLocation = modalBody.firstElementChild
+const modalDescription = modalBody.children[1]
+const modalImage = document.querySelector('.modal-image')
+const contactButton = document.querySelector('.modal-contact-button')
+
 
 const renderBrowse = () => {
     addNavEvent()
@@ -28,13 +34,20 @@ const renderCard = (post) => {
     const postArea = document.querySelector('#post-grid')
     const card = document.createElement('div')
     card.setAttribute('data-id', `${post.id}`)
+    card.setAttribute('data-location', `${post.location}`)
     card.classList.add('post-card')
+
     const cardTitle = document.createElement('h5')
     cardTitle.innerText = post.title
     card.appendChild(cardTitle)
-    // const cardInfo = document.createElement('p')
-    // cardInfo.innerText = post.description
-    // card.appendChild(cardInfo)
+
+    const cardLocation = document.createElement
+
+    const cardInfo = document.createElement('p')
+    cardInfo.innerText = post.description
+    cardInfo.style.display = 'none'
+    card.appendChild(cardInfo)
+
     const cardImg = document.createElement('img')
     cardImg.classList.add('card-image')
     cardImg.src = foliageURL
@@ -54,9 +67,11 @@ const openModal = () => {
     postModal.style.display = 'block'
     if(event.target.tagName === 'DIV'){
         cardID = event.target.dataset.id
-    } else if (event.target.tagName === 'P'){
-        cardID = event.target.parentNode.dataset.id
+    // } else if (event.target.tagName === 'P'){
+    //     cardID = event.target.parentNode.dataset.id
     } else if (event.target.tagName === 'H5'){
+        cardID = event.target.parentNode.dataset.id
+    } else if (event.target.tagName === 'IMG'){
         cardID = event.target.parentNode.dataset.id
     }
     renderModalText(cardID)
@@ -65,8 +80,18 @@ const openModal = () => {
 
 const renderModalText = (cardID) => {
     const modalCard = document.querySelector(`[data-id="${cardID}"]`)
+    const location = modalCard.dataset.location
     console.log(modalCard)
-    // modalHeader.innerText = 
+    modalHeader.innerText = modalCard.firstElementChild.innerText
+    if (location !== 'null') {
+        modalLocation.innerText = location
+    } else {
+        modalLocation.innerText = ' '
+    }
+    
+    modalDescription.innerText = modalCard.children[1].innerText
+    modalImage.src = modalCard.children[2].src
+    modalImage.classList.add('modal-image')
 }
 
 const addCloseEvents = () => {
