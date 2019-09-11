@@ -73,6 +73,7 @@ const renderCard = (post) => {
     const cardImg = document.createElement('img')
     cardImg.classList.add('card-image')
     cardImg.src = getRandomImage(plantImages, 'assets/images')
+    cardImg.setAttribute('alt', 'plant photo')
     
     card.appendChild(cardImg)
     postArea.appendChild(card)
@@ -136,8 +137,8 @@ const addModalEvents = () => {
 }
 
 const closeModal = () => {
-    const byeConfirm = document.querySelector('.modal-confirm-button')
-    byeConfirm.remove()
+    let byeConfirm = document.querySelector('.modal-confirm-button')
+    if (byeConfirm) {byeConfirm.remove()}
     deletePostButton.style.display = 'inline-block'
     postModal.style.display = 'none'
 }
@@ -227,14 +228,17 @@ const switchPage = () => {
     if(id === 'browse' && browsePage.style.display === 'none'){
         browsePage.style.display = 'block'
         createPage.style.display = 'none'
+        editPage.style.display = 'none'
         document.location.reload()
     } else if(id === 'create'){
         createPage.style.display = 'block'
         browsePage.style.display = 'none'
+        editPage.style.display = 'none'
         addCreateEvent()
     } else if (id === 'login'){
         createPage.style.display = 'none'
         browsePage.style.display = 'none'
+        editPage.style.display = 'none'
     }
 }
 

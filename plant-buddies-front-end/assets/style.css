@@ -1,9 +1,46 @@
+body {
+    background-color: #f9f9f9;
+}
+
 #nav-bar {
     background-color: rgb(92, 83, 141) !important;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+main {
+    padding-top: 60px;
 }
 
 .page-title {
     margin: 10px 20px;
+}
+
+/* #create-post {
+   background-image: url('/assets/images/leafs1.jpeg');
+   background-size: cover;
+} */
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* #create-post:after {
+    content: "";
+    display: table;
+    clear: both;
+} */
+
+#create-post-form {
+    width: 95%;
+}
+
+#branch-image {
+    max-width: 95%;
+    /* object-fit: cover;
+    opacity: 50%; */
 }
 
 .modal {
