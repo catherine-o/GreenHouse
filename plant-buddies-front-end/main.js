@@ -35,9 +35,8 @@ const modalDescription = modalBody.children[1]
 const modalImage = document.querySelector('.modal-image')
 const contactButton = document.querySelector('.modal-contact-button')
 const editPostButton = document.querySelector('.modal-edit-button')
-// const modalRight = document.querySelector('.modal-right')
+const modalRight = document.querySelector('.modal-right')
 const deletePostButton = document.querySelector('.modal-delete-button')
-// const confirmDeleteButton = document.querySelector('.modal-confirm-button')
 
 
 const renderBrowse = () => {
@@ -65,8 +64,6 @@ const renderCard = (post) => {
     const cardTitle = document.createElement('h5')
     cardTitle.innerText = post.title
     card.appendChild(cardTitle)
-
-    const cardLocation = document.createElement
 
     const cardInfo = document.createElement('p')
     cardInfo.innerText = post.description
@@ -125,25 +122,24 @@ const renderModalText = (cardID) => {
     modalImage.src = modalCard.children[2].src
     modalImage.classList.add('modal-image')
 
-    // modalRight.appendChild(addDeleteButton())
+
+    deletePostButton.setAttribute('data-delete-id', cardID)
+
 }
 
-// const addDeleteButton = () => {
-//     const deletePostButton = document.createElement('button')
-//     deletePostButton.innerText = 'Delete'
-//     deletePostButton.classList.add('modal-delete-button')
-// }
 
 const addModalEvents = () => {
     closeModalButton.addEventListener('click', closeModal)
     window.addEventListener('click', clickOutsideModal)
     editPostButton.addEventListener('click', renderPostEdit)
-    deletePostButton.addEventListener('click', deletePost)
+    deletePostButton.addEventListener('click', switchButton)
 }
 
 const closeModal = () => {
+    const byeConfirm = document.querySelector('.modal-confirm-button')
+    byeConfirm.remove()
+    deletePostButton.style.display = 'inline-block'
     postModal.style.display = 'none'
-
 }
 
 function clickOutsideModal(e){
@@ -152,33 +148,28 @@ function clickOutsideModal(e){
     }
 }
 
-// const switchButton = () => {
-//     const post = event.target.parentNode.parentNode
-//     const deleteBtn = post.querySelector('.modal-delete-button')
-//     console.log(post)
-//     event.target.style.display = 'none'
-//     event.target.parentNode.appendChild(createConfirmButton())
+const switchButton = () => {
+    event.target.style.display = 'none'
+    const confirmDeleteButton = createConfirmButton()
+    event.target.parentNode.appendChild(confirmDeleteButton)
+    confirmDeleteButton.addEventListener('click', deletePost)
+}
 
-// }
-
-// const createConfirmButton = () => {
-//     const confirmDeleteButton = document.createElement('button')
-//     confirmDeleteButton.innerText = 'Confirm'
-//     confirmDeleteButton.classList.add('modal-confirm-button')
-//     return confirmDeleteButton
-// }
+const createConfirmButton = () => {
+    const confirmDeleteButton = document.createElement('button')
+    confirmDeleteButton.innerText = 'Confirm'
+    confirmDeleteButton.classList.add('modal-confirm-button')
+    return confirmDeleteButton
+}
 
 const deletePost = () => {
     const deleteID = event.target.parentNode.parentNode.dataset.postId
-    console.log(deleteID)
     fetch(postsURL + deleteID, {method: 'DELETE'})
         .then(document.location.reload())
 }
 
 function renderPostEdit(){
-    const postContent = event.target.parentNode.parentNode.parentNode
-    // const editPostId = postContent.children[1].dataset.postId
-    
+    const postContent = event.target.parentNode.parentNode.parentNode    
     browsePage.style.display = 'none'
     editPage.style.display = 'block'
     postModal.style.display = 'none'
