@@ -13,6 +13,8 @@ const modalLocation = modalBody.firstElementChild
 const modalDescription = modalBody.children[1]
 const modalImage = document.querySelector('.modal-image')
 const contactButton = document.querySelector('.modal-contact-button')
+const editPostButton = document.querySelector('.modal-edit-button')
+const deletePostButton = document.querySelector('.modal-delete-button')
 
 
 const renderBrowse = () => {
@@ -125,6 +127,9 @@ const switchPage = () => {
         createPage.style.display = 'block'
         browsePage.style.display = 'none'
         addCreateEvent()
+    } else if (id === 'login'){
+        createPage.style.display = 'none'
+        browsePage.style.display = 'none'
     }
 }
 

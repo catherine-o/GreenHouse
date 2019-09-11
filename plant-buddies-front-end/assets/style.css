@@ -11,7 +11,7 @@
 }
 
 .modal-header {
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 .modal-content {
@@ -83,6 +83,42 @@
 }
 
 .modal-contact-button:hover {
+    box-shadow: 0px 0px 0px;
+}
+
+.modal-edit-button {
+    font-size: 12pt;
+    text-align: center;
+    line-height: 25px;
+    background-color:  rgb(162, 150, 228);
+    box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20);
+    border-style: solid;
+    border-width: 0.5px;
+    /* border-color: black; */
+    border-radius: 2px;
+    height: 30px;
+    width: 80px;
+}
+
+.modal-edit-button:hover {
+    box-shadow: 0px 0px 0px;
+}
+
+.modal-delete-button {
+    font-size: 12pt;
+    text-align: center;
+    line-height: 25px;
+    background-color:  rgb(162, 150, 228);
+    box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20);
+    border-style: solid;
+    border-width: 0.5px;
+    /* border-color: black; */
+    border-radius: 2px;
+    height: 30px;
+    width: 80px;
+}
+
+.modal-delete-button:hover {
     box-shadow: 0px 0px 0px;
 }
 
