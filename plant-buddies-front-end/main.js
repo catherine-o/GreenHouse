@@ -85,8 +85,6 @@ function getRandomImage(imgAr, path) {
     path = path || 'images/'; // default path here
     var num = Math.floor( Math.random() * imgAr.length );
     var img = imgAr[ num ];
-    // var imgStr = '<img src="' + path + img + '" alt = "">';
-    // document.write(imgStr); document.close();
     return img
 }
 
@@ -112,8 +110,8 @@ const openModal = () => {
 
 const renderModalText = (cardID) => {
     const modalCard = document.querySelector(`[data-id="${cardID}"]`)
+    modalBody.setAttribute('data-post-id', cardID)
     const location = modalCard.dataset.location
-    console.log(modalCard)
     modalHeader.innerText = modalCard.firstElementChild.innerText
     if (location !== 'null') {
         modalLocation.innerText = location
@@ -129,7 +127,7 @@ const renderModalText = (cardID) => {
 const addModalEvents = () => {
     closeModalButton.addEventListener('click', closeModal)
     window.addEventListener('click', clickOutsideModal)
-    editPostButton.addEventListener('click', editPost)
+    editPostButton.addEventListener('click', renderPostEdit)
 }
 
 const closeModal = () => {
@@ -142,10 +140,58 @@ function clickOutsideModal(e){
     }
 }
 
-function editPost(){
+function renderPostEdit(){
+    const postContent = event.target.parentNode.parentNode.parentNode
+    // const editPostId = postContent.children[1].dataset.postId
+    
     browsePage.style.display = 'none'
     editPage.style.display = 'block'
     postModal.style.display = 'none'
+    prepopulateForm(postContent)
+    addEditEvent()
+    // console.log(editPostId)
+    // editPost(editPostId)
+}
+
+const prepopulateForm = (info) => {
+    const editID = info.children[1].dataset.postId
+    const editTitle = info.firstElementChild.lastElementChild.innerText
+    const editLocation = info.children[1].firstElementChild.innerText
+    const editDescription = info.children[1].children[1].innerText
+    // console.log(info)
+    editPostForm[0].value = editID
+    editPostForm[1].value = editTitle
+    editPostForm[2].value = editLocation
+    editPostForm[3].value = editDescription
+}
+
+const addEditEvent = () => {
+    editPostForm.addEventListener('submit', editPost)
+}
+
+const editPost = () => {
+    event.preventDefault()
+    const formDataEdit = new FormData(editPostForm)
+    const editIdData = formDataEdit.get('post_id')
+    const editTitleData = formDataEdit.get('edit-post-title')
+    const editLocationData = formDataEdit.get('edit-post-location')
+    const editDescriptionData = formDataEdit.get('edit-post-description')
+    const editPostId = formDataEdit.get('post_id')
+
+    const configEdit = {
+        method: 'PATCH', 
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            'title': editTitleData,
+            'location': editLocationData,
+            'description': editDescriptionData
+        })
+    }
+    console.log(editIdData)
+    fetch(postsURL + editIdData, configEdit)
 }
 
 const addNavEvent = () => {
@@ -174,17 +220,15 @@ const addCreateEvent = () => {
 
 const createNewPost = () => {
     event.preventDefault()
-    const formData = new FormData(event.target)
-    const postTitle = formData.get("post-title")
-    const postLocation = formData.get("post-location")
-    const postDescription = formData.get("post-description")
-    const config = {
+    const formDataCreate = new FormData(event.target)
+    const postTitle = formDataCreate.get('post-title')
+    const postLocation = formDataCreate.get('post-location')
+    const postDescription = formDataCreate.get('post-description')
+    const configCreate = {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            // "Access-Control-Allow-Origin": "*", 
-            // "Access-Control-Allow-Credentials": true 
+            'Accept': 'application/json'
         },
         body: JSON.stringify({
             'title': postTitle,
@@ -192,7 +236,7 @@ const createNewPost = () => {
             'description': postDescription
         })
     }
-    fetch(postsURL, config)
+    fetch(postsURL, configCreate)
         .then(response => response.json())
         // .then(res => console.log(res))
         .then(createCardFromForm)
