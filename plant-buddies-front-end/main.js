@@ -1,4 +1,5 @@
 const postsURL = 'http://localhost:3000/posts/'
+
 // const foliageURL = 'https://www.thegardenglove.com/wp-content/uploads/2014/05/img_0585.jpg'
 const leafs1 = 'assets/images/leafs1.jpeg'
 const leafs2 = 'assets/images/leafs2.jpeg'
