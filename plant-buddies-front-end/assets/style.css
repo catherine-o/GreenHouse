@@ -309,11 +309,16 @@ main {
 
 #resources-page {
     display: none;
-    background-color: rgba(209, 164, 113, 0.87);
+    /* background-color: rgba(209, 164, 113, 0.87); */
 }
 
 .resources {
-    padding: 60px;
+    padding: 80px;
+    background-image: url('/assets/images/leaves-background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .resource-card {
@@ -330,12 +335,13 @@ main {
 
 .resources ul {
     list-style: none;
-    margin: 0px 80px;
-    padding: 15px;
+    margin: 0px 120px;
+    padding: 20px 25px;
     border: 2px solid darkgrey;
     border-radius: 3px;
-    background-color: white;
+    background-color: #f9f9f9;
 }
+
 
 #login-user {
     display: none;

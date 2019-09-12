@@ -289,7 +289,16 @@ const createResourceCard = (resource) => {
     const card = document.createElement('div')
     card.classList.add('resource-card')
     card.innerText = resource.name
+    createLinkEvent(card)
     return card
+}
+
+const createLinkEvent = (resource) => {
+    resource.addEventListener('click', routeLink)
+}
+
+const routeLink = () => {
+    console.log(event.target)
 }
 
 const showLogin = () => {
