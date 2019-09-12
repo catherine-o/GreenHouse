@@ -10,37 +10,45 @@ body {
 }
 
 main {
-    padding-top: 60px;
+    padding-top: 65px;
 }
 
 .page-title {
-    margin: 10px 20px;
+    margin: 20px 0px 0px 50px;
+    padding: 10px;
 }
-
-/* #create-post {
-   background-image: url('/assets/images/leafs1.jpeg');
-   background-size: cover;
-} */
+x
+.form-group {
+    padding: 20px;
+}
 
 .column {
     float: left;
     width: 50%;
 }
 
-/* #create-post:after {
+#create-post:after {
     content: "";
     display: table;
     clear: both;
-} */
+}
 
 #create-post-form {
-    width: 95%;
+    padding-left: 30px;
+}
+
+.img-box {
+    width: 50%;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
 }
 
 #branch-image {
-    max-width: 95%;
-    /* object-fit: cover;
-    opacity: 50%; */
+    width: 750px;
+    right: 3px;
+    object-fit: cover;
+    opacity: 0.95;
 }
 
 .modal {
