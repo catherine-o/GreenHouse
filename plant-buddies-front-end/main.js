@@ -1,4 +1,5 @@
 const postsURL = 'http://localhost:3000/posts/'
+const resourcesURL = 'http://localhost:3000/resources'
 
 // const foliageURL = 'https://www.thegardenglove.com/wp-content/uploads/2014/05/img_0585.jpg'
 const leafs1 = 'assets/images/leafs1.jpeg'
@@ -27,6 +28,8 @@ const createPage = document.querySelector('#create-post')
 const createPostForm = document.querySelector('#create-post-form')
 const editPage = document.querySelector('#edit-post')
 const editPostForm = document.querySelector('#edit-post-form')
+const resourcesPage = document.querySelector('#resources-page')
+const resourcesList = document.querySelector('#resources-list')
 const loginPage = document.querySelector('#login-user')
 
 const postModal = document.querySelector('.modal')
@@ -46,6 +49,7 @@ const deletePostButton = document.querySelector('.modal-delete-button')
 const renderBrowse = () => {
     addNavEvent()
     getPosts()
+    getResources()
 }
 
 const getPosts = () => {
@@ -228,24 +232,83 @@ const addNavEvent = () => {
 const switchPage = () => {
     const id = event.target.id
     if(id === 'browse' && browsePage.style.display === 'none'){
-        browsePage.style.display = 'block'
-        createPage.style.display = 'none'
-        editPage.style.display = 'none'
-        loginPage.style.display = 'none'
-        document.location.reload()
+        showBrowse()
     } else if(id === 'create'){
-        createPage.style.display = 'block'
-        browsePage.style.display = 'none'
-        editPage.style.display = 'none'
-        loginPage.style.display = 'none'
-        addCreateEvent()
+        showCreate()
+    } else if(id === 'resources'){
+        showResources()
     } else if (id === 'login'){
-        createPage.style.display = 'none'
-        browsePage.style.display = 'none'
-        editPage.style.display = 'none'
-        loginPage.style.display = 'block'
-        // body.style.backgroundImage = "url('/assets/images/leaves-background.png')";
+        showLogin()
     }
+}
+
+const showBrowse = () => {
+    browsePage.style.display = 'block'
+    createPage.style.display = 'none'
+    editPage.style.display = 'none'
+    resourcesPage.style.display = 'none'
+    loginPage.style.display = 'none'
+    document.location.reload()
+}
+
+const showCreate = () => {
+    createPage.style.display = 'block'
+    browsePage.style.display = 'none'
+    editPage.style.display = 'none'
+    resourcesPage.style.display = 'none'
+    loginPage.style.display = 'none'
+    addCreateEvent()
+}
+
+const showResources = () => {
+    resourcesPage.style.display = 'block'
+    createPage.style.display = 'none'
+    browsePage.style.display = 'none'
+    editPage.style.display = 'none'
+    loginPage.style.display = 'none'
+}
+
+const getResources = () => {
+    fetch(resourcesURL)
+        .then(response => response.json())
+        .then(listResources)
+}
+
+const listResources = (resources) => {
+    resources.map(renderResource)
+}
+
+const renderResource = (resource) => {
+    const resourceCard = createResourceCard(resource)
+    const resourceItem = document.createElement('li')
+    resourceItem.appendChild(resourceCard)
+    resourcesList.appendChild(resourceItem)
+}
+
+const createResourceCard = (resource) => {
+    const card = document.createElement('div')
+    card.classList.add('resource-card')
+    card.innerText = resource.name
+    card.setAttribute('data-link', resource.link)
+    createLinkEvent(card)
+    return card
+}
+
+const createLinkEvent = (resource) => {
+    resource.addEventListener('click', routeLink)
+}
+
+const routeLink = () => {
+    const link = event.target.dataset.link
+    window.open(link)
+}
+
+const showLogin = () => {
+    loginPage.style.display = 'block'
+    createPage.style.display = 'none'
+    browsePage.style.display = 'none'
+    editPage.style.display = 'none'
+    resourcesPage.style.display = 'none'
 }
 
 const addCreateEvent = () => {
