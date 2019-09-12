@@ -10,19 +10,23 @@ body {
 }
 
 main {
-    padding-top: 65px;
+    padding-top: 70px;
 }
 
 .page-title {
     margin: 20px 0px 0px 50px;
     padding: 10px;
 }
-x
+
 .form-group {
     padding: 20px;
 }
 
-.column {
+.form-control {
+    margin: 0px 0px 8px 0px;
+}
+
+.column-create {
     float: left;
     width: 50%;
 }
@@ -37,7 +41,7 @@ x
     padding-left: 30px;
 }
 
-.img-box {
+.img-box-create {
     width: 50%;
     position: absolute;
     bottom: 3px;
@@ -49,6 +53,37 @@ x
     right: 3px;
     object-fit: cover;
     opacity: 0.95;
+}
+
+.column-edit {
+    float: right;
+    width: 60%;
+    background-color: #f6f6f6;
+}
+
+#edit-post:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#edit-post-form {
+    padding: 0px 30px;
+    margin: 20px;
+}
+
+.img-box-edit{
+    width: 40%;
+    position: absolute;
+    bottom: 0px;
+    /* right: 3px; */
+}
+
+#branch2-image {
+    width: 520px;
+    left: 3px;
+    object-fit: cover;
+    opacity: 0.85;
 }
 
 .modal {

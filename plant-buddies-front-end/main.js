@@ -123,9 +123,7 @@ const renderModalText = (cardID) => {
     modalImage.src = modalCard.children[2].src
     modalImage.classList.add('modal-image')
 
-
     deletePostButton.setAttribute('data-delete-id', cardID)
-
 }
 
 
