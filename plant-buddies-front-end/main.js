@@ -243,6 +243,7 @@ const switchPage = () => {
         browsePage.style.display = 'none'
         editPage.style.display = 'none'
         loginPage.style.display = 'block'
+        // body.style.backgroundImage = "url('/assets/images/leaves-background.png')";
     }
 }
 
