@@ -26,16 +26,19 @@ const createPage = document.querySelector('#create-post')
 const createPostForm = document.querySelector('#create-post-form')
 const editPage = document.querySelector('#edit-post')
 const editPostForm = document.querySelector('#edit-post-form')
+const loginPage = document.querySelector('#login-user')
+
 const postModal = document.querySelector('.modal')
 const closeModalButton = document.querySelector('.modalCloseButton')
 const modalHeader = document.querySelector('.modal-header').lastElementChild
 const modalBody = document.querySelector('.modal-body')
 const modalLocation = modalBody.firstElementChild
 const modalDescription = modalBody.children[1]
+
+const modalRight = document.querySelector('.modal-right')
 const modalImage = document.querySelector('.modal-image')
 const contactButton = document.querySelector('.modal-contact-button')
 const editPostButton = document.querySelector('.modal-edit-button')
-const modalRight = document.querySelector('.modal-right')
 const deletePostButton = document.querySelector('.modal-delete-button')
 
 
@@ -227,16 +230,20 @@ const switchPage = () => {
         browsePage.style.display = 'block'
         createPage.style.display = 'none'
         editPage.style.display = 'none'
+        loginPage.style.display = 'none'
         document.location.reload()
     } else if(id === 'create'){
         createPage.style.display = 'block'
         browsePage.style.display = 'none'
         editPage.style.display = 'none'
+        loginPage.style.display = 'none'
         addCreateEvent()
     } else if (id === 'login'){
         createPage.style.display = 'none'
         browsePage.style.display = 'none'
         editPage.style.display = 'none'
+        loginPage.style.display = 'block'
+        // body.style.backgroundImage = "url('/assets/images/leaves-background.png')";
     }
 }
 

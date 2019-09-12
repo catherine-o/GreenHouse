@@ -10,7 +10,7 @@ body {
 }
 
 main {
-    padding-top: 70px;
+    padding-top: 65px;
 }
 
 .page-title {
@@ -45,12 +45,12 @@ main {
     width: 50%;
     position: absolute;
     bottom: 3px;
-    right: 3px;
+    right: 0px;
 }
 
 #branch-image {
     width: 750px;
-    right: 3px;
+    right: 0px;
     object-fit: cover;
     opacity: 0.95;
 }
@@ -59,6 +59,10 @@ main {
     float: right;
     width: 60%;
     background-color: #f6f6f6;
+}
+
+#edit-post {
+    background-color: #f4f6f7;
 }
 
 #edit-post:after {
@@ -196,7 +200,7 @@ main {
     font-size: 12pt;
     text-align: center;
     line-height: 25px;
-    background-color:  rgb(250, 147, 87);
+    background-color:  rgb(221, 128, 97);
     box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20);
     border-style: solid;
     border-width: 0.5px;
@@ -228,8 +232,9 @@ main {
 }
 
 .modal-footer {
-    height: 5px;
+    height: 6px;
     background-color:  rgb(162, 150, 228);
+    border-bottom: 1px solid darkgray;
 }
 
 #show-posts {
@@ -242,12 +247,12 @@ main {
     margin: 15px;
     box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.678);
     position: relative;
-    /* transition: transform 2s; */
+    transition: transform 2s;
 }
 
-/* .post-card:hover {
+.post-card:hover {
     transform: scale(1.05)
-} */
+}
 
 .post-card h5 {
     background-color: rgba(153, 226, 165, 0.918);
@@ -296,4 +301,42 @@ main {
 
 #update-post {
     margin: 10px 5px;
+}
+
+#login-user {
+    display: none;
+    height: 800%;
+    /* object-fit: cover; */
+    background-image: url('/assets/images/leaves-background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 100px;
+}
+
+#login-form {
+    width: 500px;
+    margin: 30px auto 200px auto;
+    border: 1px solid darkgrey;
+    border-radius: 2px;
+    padding: 75px;
+    background-color: rgba(196, 118, 92, 0.774);
+}
+
+.login-button {
+    font-size: 12pt;
+    text-align: center;
+    line-height: 25px;
+    background-color:  rgb(168, 159, 216);
+    box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20);
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 2px;
+    height: 30px;
+    width: 110px;
+    margin: 15px 30px;
+}
+
+.login-button:hover {
+    box-shadow: 0px 0px 0px;
 }
