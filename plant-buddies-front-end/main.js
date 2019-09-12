@@ -289,6 +289,7 @@ const createResourceCard = (resource) => {
     const card = document.createElement('div')
     card.classList.add('resource-card')
     card.innerText = resource.name
+    card.setAttribute('data-link', resource.link)
     createLinkEvent(card)
     return card
 }
@@ -298,7 +299,8 @@ const createLinkEvent = (resource) => {
 }
 
 const routeLink = () => {
-    console.log(event.target)
+    const link = event.target.dataset.link
+    window.open(link)
 }
 
 const showLogin = () => {
