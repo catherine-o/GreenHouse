@@ -297,3 +297,24 @@ main {
 #update-post {
     margin: 10px 5px;
 }
+
+#login-user {
+    display: none;
+    height: 100%;
+    /* object-fit: cover; */
+    /* margin-top: 100px; */
+    background-image: url('/assets/images/leaves-background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+#login-form {
+    width: 400px;
+    margin: 100px auto;
+    border: 1px solid darkgrey;
+    border-radius: 2px;
+    padding: 30px;
+    background-color: rgba(196, 118, 92, 0.774);
+}
