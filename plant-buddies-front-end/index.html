@@ -26,7 +26,7 @@
               <a class="nav-link" id="browse">Lend a Hand</a>
             </li>
           <li class="nav-item">
-            <a class="nav-link" id="create">Find a Hand</a>
+            <a class="nav-link" id="create">Create Post</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="resources">Resources</a>
@@ -61,43 +61,56 @@
 
       <!-- CREATE POST -->
       <div id="create-post">
-        <h2 class="page-title">Create new post:</h2>
-        <div class="form-group">
-          <form id="create-post-form">
-            <label for="post-title">Title</label>
-            <input type="text" class="form-control" name="post-title" placeholder="Enter Text">
-            <label class="col-form-label" for="post-location">Location</label>
-            <input type="text" class="form-control" placeholder="Location" name="post-location">
-            <label for="post-description">Description</label>
-            <textarea class="form-control" name="post-description" rows="3"></textarea>
-            <button type="submit" class="btn btn-primary" id="submit-post">Submit</button>
-          </form>
+        <div class="column-create">
+            <h2 class="page-title">Create new post:</h2>
+            <div class="form-group">
+              <form id="create-post-form">
+                <label for="post-title">Title</label>
+                <input type="text" class="form-control" name="post-title" placeholder="Enter Text">
+                <label class="col-form-label" for="post-location">Location</label>
+                <input type="text" class="form-control" placeholder="❃ ❃ ❃" name="post-location">
+                <label for="post-description">Description</label>
+                <textarea class="form-control" name="post-description" 
+                  rows="3" placeholder="Tell us the details"></textarea>
+                <label for="plant-image">Add a photo:</label>
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                <button type="submit" class="btn btn-primary" id="submit-post">Submit</button>
+              </form>
+            </div>
+        </div>
+        <div class="img-box-create">
+            <img id="branch-image" src="assets/images/leafs1-1.png" alt="branch with leaves">
         </div>
       </div>
 
 
       <!-- EDIT POST -->
       <div id="edit-post">
-          <h2 class="page-title">Edit post:</h2>
-          <div class="form-group">
-            <form id="edit-post-form">
-              <input type="hidden" name="post_id">
-              <label for="edit-post-title">Title</label>
-              <input type="text" class="form-control" name="edit-post-title" placeholder="Enter Text">
-              <label class="col-form-label" for="edit-post-location">Location</label>
-              <input type="text" class="form-control" name="edit-post-location">
-              <label for="edit-post-description">Description</label>
-              <textarea class="form-control" name="edit-post-description" rows="3"></textarea>
-              <button type="submit" class="btn btn-primary" id="update-post">Update</button>
-            </form>
+          <div class="img-box-edit">
+              <img id="branch2-image" src="assets/images/leafs2-1.png" alt="branch with leaves">
           </div>
+        <div class="column-edit">
+            <h2 class="page-title">Edit post:</h2>
+            <div class="form-group">
+              <form id="edit-post-form">
+                <input type="hidden" name="post_id">
+                <label for="edit-post-title">Title</label>
+                <input type="text" class="form-control" name="edit-post-title" placeholder="Enter Text">
+                <label class="col-form-label" for="edit-post-location">Location</label>
+                <input type="text" class="form-control" name="edit-post-location">
+                <label for="edit-post-description">Description</label>
+                <textarea class="form-control" name="edit-post-description" rows="3"></textarea>
+                <button type="submit" class="btn btn-primary" id="update-post">Update</button>
+              </form>
+            </div>
+          </div>
+          
         </div>
+        
+          
 
-      
-  </main>
 
-
-    <!-- SHOW POST MODAL -->
+        <!-- SHOW POST MODAL -->
     <div id="simpleModal" class="modal">
         <div class="modal-content">
           <div class="modal-header">
@@ -125,6 +138,12 @@
 
     <!-- LOGIN PAGE -->
   
+
+      
+  </main>
+
+
+    
 
 
 

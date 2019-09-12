@@ -1,9 +1,89 @@
+body {
+    background-color: #f9f9f9;
+}
+
 #nav-bar {
     background-color: rgb(92, 83, 141) !important;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+main {
+    padding-top: 70px;
 }
 
 .page-title {
-    margin: 10px 20px;
+    margin: 20px 0px 0px 50px;
+    padding: 10px;
+}
+
+.form-group {
+    padding: 20px;
+}
+
+.form-control {
+    margin: 0px 0px 8px 0px;
+}
+
+.column-create {
+    float: left;
+    width: 50%;
+}
+
+#create-post:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#create-post-form {
+    padding-left: 30px;
+}
+
+.img-box-create {
+    width: 50%;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+}
+
+#branch-image {
+    width: 750px;
+    right: 3px;
+    object-fit: cover;
+    opacity: 0.95;
+}
+
+.column-edit {
+    float: right;
+    width: 60%;
+    background-color: #f6f6f6;
+}
+
+#edit-post:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#edit-post-form {
+    padding: 0px 30px;
+    margin: 20px;
+}
+
+.img-box-edit{
+    width: 40%;
+    position: absolute;
+    bottom: 0px;
+    /* right: 3px; */
+}
+
+#branch2-image {
+    width: 520px;
+    left: 3px;
+    object-fit: cover;
+    opacity: 0.85;
 }
 
 .modal {
