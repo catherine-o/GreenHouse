@@ -14,7 +14,7 @@
 
   <!-- NAV -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav-bar">
-      <a class="navbar-brand" href="#">Plant Hands ❃</a>
+      <a class="navbar-brand" href="#">GreenHouse ❃</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,11 +45,16 @@
     <main>
 
       
-
-
-
       <!-- SHOW POSTS -->
       <div id="show-posts">
+          <a class="weatherwidget-io" id="weather" href="https://forecast7.com/en/39d74n104d99/denver/?unit=us" 
+              data-label_1="DENVER" data-label_2="WEATHER" data-font="Arial Black" data-icons="Climacons" 
+                  data-days="5" data-theme="beige" >DENVER WEATHER</a>
+          <script>
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id))
+                  {js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';
+                      fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+          </script>
           <!-- <h2 class="page-title">Browse posts:</h2> -->
           <div id="post-grid">
               <!-- Posts go here-->

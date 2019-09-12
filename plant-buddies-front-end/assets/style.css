@@ -9,6 +9,10 @@ body {
     width: 100%;
 }
 
+#weather {
+    display: none;
+}
+
 main {
     padding-top: 65px;
 }
