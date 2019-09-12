@@ -27,6 +27,7 @@ const createPage = document.querySelector('#create-post')
 const createPostForm = document.querySelector('#create-post-form')
 const editPage = document.querySelector('#edit-post')
 const editPostForm = document.querySelector('#edit-post-form')
+const resourcesPage = document.querySelector('#resources-page')
 const loginPage = document.querySelector('#login-user')
 
 const postModal = document.querySelector('.modal')
@@ -228,24 +229,49 @@ const addNavEvent = () => {
 const switchPage = () => {
     const id = event.target.id
     if(id === 'browse' && browsePage.style.display === 'none'){
-        browsePage.style.display = 'block'
-        createPage.style.display = 'none'
-        editPage.style.display = 'none'
-        loginPage.style.display = 'none'
-        document.location.reload()
+        showBrowse()
     } else if(id === 'create'){
-        createPage.style.display = 'block'
-        browsePage.style.display = 'none'
-        editPage.style.display = 'none'
-        loginPage.style.display = 'none'
-        addCreateEvent()
+        showCreate()
+    } else if(id === 'resources'){
+        showResources()
     } else if (id === 'login'){
-        createPage.style.display = 'none'
-        browsePage.style.display = 'none'
-        editPage.style.display = 'none'
-        loginPage.style.display = 'block'
-        // body.style.backgroundImage = "url('/assets/images/leaves-background.png')";
+        showLogin()
     }
+}
+
+const showBrowse = () => {
+    browsePage.style.display = 'block'
+    createPage.style.display = 'none'
+    editPage.style.display = 'none'
+    resourcesPage.style.display = 'none'
+    loginPage.style.display = 'none'
+    document.location.reload()
+}
+
+const showCreate = () => {
+    createPage.style.display = 'block'
+    browsePage.style.display = 'none'
+    editPage.style.display = 'none'
+    resourcesPage.style.display = 'none'
+    loginPage.style.display = 'none'
+    addCreateEvent()
+}
+
+const showResources = () => {
+    resourcePage.style.display = 'block'
+    createPage.style.display = 'none'
+    browsePage.style.display = 'none'
+    editPage.style.display = 'none'
+    resourcesPage.style.display = 'none'
+    loginPage.style.display = 'none'
+}
+
+const showLogin = () => {
+    loginPage.style.display = 'block'
+    createPage.style.display = 'none'
+    browsePage.style.display = 'none'
+    editPage.style.display = 'none'
+    resourcesPage.style.display = 'none'
 }
 
 const addCreateEvent = () => {
