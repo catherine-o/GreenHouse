@@ -404,3 +404,19 @@ li div:after {
     box-shadow: 0px 0px 0px;
 }
 
+#profile-page {
+    display: none;
+}
+
+.profile-grid {
+    display: flex;
+}
+
+#profile-photo {
+    max-width: 40%;
+    margin: 30px;
+}
+
+.profile-info {
+    margin: 30px 30px 30px 0px;
+}

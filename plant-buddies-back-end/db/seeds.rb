@@ -10,9 +10,13 @@ Post.destroy_all
 User.destroy_all
 Resource.destroy_all
 
-user1 = User.create(username: "radplants", name: "Cat", password: "test", bio: "plant lover", photo: "https://unsplash.com/photos/xJ0Isuqt9ys")
-user2 = User.create(username: "ilikeleaves", name: "Sarah", password: "test", bio: "I heart foliage", photo: "https://unsplash.com/photos/GpVak9-cL6E")
-user3 = User.create(username: "naturelover", name: "Rick", password: "test", bio: "Books, flowers, mountains and wine", photo: "https://unsplash.com/photos/TfaUJpnbxxA")
+radplantsPhoto = "https://tinyurl.com/y3n6vhky"
+ilikeleavesPhoto = "https://tinyurl.com/y6q3vnzq"
+natureloverPhoto = "https://tinyurl.com/yyu89vqs"
+
+user1 = User.create(username: "radplants", name: "Cat", password: "test", bio: "plant lover", photo: radplantsPhoto)
+user2 = User.create(username: "ilikeleaves", name: "Sarah", password: "test", bio: "I heart foliage", photo: ilikeleavesPhoto)
+user3 = User.create(username: "naturelover", name: "Rick", password: "test", bio: "Books, flowers, mountains and wine", photo: natureloverPhoto)
 
 post1 = Post.create(title: "Need help", description: "I have so many plants it sometimes takes a few hours to attend to them all. I'd appreciate the help today. By the way, I have a dog in the house but he's calm.", location: "RiNo")
 post2 = Post.create(title: "Bad at plants", description: "I love my plants but can never tell what's going on. Can someone come check on how they're doing? Might need some repotted?", location: "Sunnyside")

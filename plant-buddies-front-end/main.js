@@ -36,6 +36,7 @@ const resourcesPage = document.querySelector('#resources-page')
 const resourcesList = document.querySelector('#resources-list')
 const loginPage = document.querySelector('#login-user')
 const loginForm = document.querySelector('#login-form')
+const profilePage = document.querySelector('#profile-page')
 
 const postModal = document.querySelector('.modal')
 const closeModalButton = document.querySelector('.modalCloseButton')
@@ -50,6 +51,10 @@ const contactButton = document.querySelector('.modal-contact-button')
 const editPostButton = document.querySelector('.modal-edit-button')
 const deletePostButton = document.querySelector('.modal-delete-button')
 const newUserButton = document.querySelector('#new-user')
+
+const profilePhoto = document.querySelector('#profile-photo')
+const profileName = document.querySelector('.profile-name')
+const profileBio = document.querySelector('.profile-bio')
 
 
 const renderBrowse = () => {
@@ -254,6 +259,7 @@ const showBrowse = () => {
     editPage.style.display = 'none'
     resourcesPage.style.display = 'none'
     loginPage.style.display = 'none'
+    profilePage.style.display = 'none'
     document.location.reload()
 }
 
@@ -263,6 +269,7 @@ const showCreate = () => {
     editPage.style.display = 'none'
     resourcesPage.style.display = 'none'
     loginPage.style.display = 'none'
+    profilePage.style.display = 'none'
     addCreateEvent()
 }
 
@@ -272,6 +279,7 @@ const showResources = () => {
     browsePage.style.display = 'none'
     editPage.style.display = 'none'
     loginPage.style.display = 'none'
+    profilePage.style.display = 'none'
 }
 
 const showLogin = () => {
@@ -280,6 +288,7 @@ const showLogin = () => {
     browsePage.style.display = 'none'
     editPage.style.display = 'none'
     resourcesPage.style.display = 'none'
+    profilePage.style.display = 'none'
     createLoginEvents()
 }
 
@@ -374,7 +383,7 @@ const loginUser = () => {
     const formDataLogin = new FormData(loginForm)
     currentUser = formDataLogin.get('username')
     const password = formDataLogin.get('password')
-    console.log(currentUser)
+    // console.log(currentUser)
     fetch(usersURL)
         .then(response => response.json())
         .then(listUsers)  //find user and open profile
@@ -387,15 +396,26 @@ const listUsers = (users) => {
 const selectUser = (user) => {
     if (user.username === currentUser){
         currentUser = user
-        console.log(user)
-        // renderProfile(user)
+        showProfilePage(user)
     } else {
         loginForm.reset()
     }
 }
 
-const renderProfile = (user) => {
-    
+const showProfilePage = (user) => {
+    profilePage.style.display = 'block'
+    browsePage.style.display = 'none'
+    createPage.style.display = 'none'
+    editPage.style.display = 'none'
+    resourcesPage.style.display = 'none'
+    loginPage.style.display = 'none'
+    renderProfile(user)
+}
+
+renderProfile = (user) => {
+    console.log(user)
+    profilePhoto.src = user.photo
+    profileName.innerText = user.name
 }
 
 const createNewUser = () => {
