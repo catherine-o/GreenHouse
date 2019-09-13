@@ -58,6 +58,7 @@ const profileBio = document.querySelector('.profile-bio')
 const loginLink = document.querySelector('#login')
 const logoutLink = document.querySelector('#logout')
 const createPostLink = document.querySelector('#create')
+const profileLink = document.querySelector('#profile')
 
 
 const renderBrowse = () => {
@@ -259,6 +260,8 @@ const switchPage = () => {
         showCreate()
     } else if(id === 'resources'){
         showResources()
+    } else if(id === 'profile'){
+        showProfilePage()
     } else if (id === 'login'){
         showLogin()
     } else if (id === 'logout'){
@@ -429,6 +432,7 @@ const renderProfile = (user) => {
     loginLink.style.display = 'none'
     logoutLink.style.display = 'inline-block'
     createPostLink.style.display = 'inline-block'
+    profileLink.style.display = 'inline-block'
     profilePhoto.src = user.photo
     profileName.innerText = user.name
 }
@@ -439,6 +443,7 @@ const logoutUser = () => {
     logoutLink.style.display = 'none'
     loginLink.style.display = 'inline-block'
     createPostLink.style.display = 'none'
+    profileLink.style.display = 'none'
     showLogin()
 }
 

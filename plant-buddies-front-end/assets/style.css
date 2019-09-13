@@ -425,6 +425,10 @@ li div:after {
     display: none;
 }
 
+#profile {
+    display: none;
+}
+
 #logout {
     display: none;
 }
