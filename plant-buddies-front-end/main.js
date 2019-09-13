@@ -3,7 +3,7 @@ const resourcesURL = 'http://localhost:3000/resources'
 const usersURL = 'http://localhost:3000/users/'
 
 let currentUser = null
-let logginIn = false
+let loggedIn = false
 
 // const foliageURL = 'https://www.thegardenglove.com/wp-content/uploads/2014/05/img_0585.jpg'
 const leafs1 = 'assets/images/leafs1.jpeg'
@@ -55,6 +55,9 @@ const newUserButton = document.querySelector('#new-user')
 const profilePhoto = document.querySelector('#profile-photo')
 const profileName = document.querySelector('.profile-name')
 const profileBio = document.querySelector('.profile-bio')
+const loginLink = document.querySelector('#login')
+const logoutLink = document.querySelector('#logout')
+const createPostLink = document.querySelector('#create')
 
 
 const renderBrowse = () => {
@@ -250,6 +253,8 @@ const switchPage = () => {
         showResources()
     } else if (id === 'login'){
         showLogin()
+    } else if (id === 'logout'){
+        logoutUser()
     }
 }
 
@@ -412,10 +417,22 @@ const showProfilePage = (user) => {
     renderProfile(user)
 }
 
-renderProfile = (user) => {
-    console.log(user)
+const renderProfile = (user) => {
+    loggedIn = true
+    loginLink.style.display = 'none'
+    logoutLink.style.display = 'inline-block'
+    createPostLink.style.display = 'inline-block'
     profilePhoto.src = user.photo
     profileName.innerText = user.name
+}
+
+const logoutUser = () => {
+    loggedIn = false
+    currentUser = null
+    logoutLink.style.display = 'none'
+    loginLink.style.display = 'inline-block'
+    createPostLink.style.display = 'none'
+    showLogin()
 }
 
 const createNewUser = () => {

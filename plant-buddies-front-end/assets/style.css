@@ -420,3 +420,11 @@ li div:after {
 .profile-info {
     margin: 30px 30px 30px 0px;
 }
+
+#create {
+    display: none;
+}
+
+#logout {
+    display: none;
+}
