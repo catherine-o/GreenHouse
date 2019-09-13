@@ -84,7 +84,7 @@ const renderCard = (post) => {
     cardImg.setAttribute('alt', 'plant photo')
     
     card.appendChild(cardImg)
-    postArea.appendChild(card)
+    postArea.prepend(card)
     addCardEvent(card)
     // browsePage.style.display='none'
 }
@@ -268,41 +268,6 @@ const showResources = () => {
     loginPage.style.display = 'none'
 }
 
-const getResources = () => {
-    fetch(resourcesURL)
-        .then(response => response.json())
-        .then(listResources)
-}
-
-const listResources = (resources) => {
-    resources.map(renderResource)
-}
-
-const renderResource = (resource) => {
-    const resourceCard = createResourceCard(resource)
-    const resourceItem = document.createElement('li')
-    resourceItem.appendChild(resourceCard)
-    resourcesList.appendChild(resourceItem)
-}
-
-const createResourceCard = (resource) => {
-    const card = document.createElement('div')
-    card.classList.add('resource-card')
-    card.innerText = resource.name
-    card.setAttribute('data-link', resource.link)
-    createLinkEvent(card)
-    return card
-}
-
-const createLinkEvent = (resource) => {
-    resource.addEventListener('click', routeLink)
-}
-
-const routeLink = () => {
-    const link = event.target.dataset.link
-    window.open(link)
-}
-
 const showLogin = () => {
     loginPage.style.display = 'block'
     createPage.style.display = 'none'
@@ -343,6 +308,43 @@ const createCardFromForm = (post) => {
     createPage.style.display = 'none'
     renderCard(post)
 }
+
+const getResources = () => {
+    fetch(resourcesURL)
+        .then(response => response.json())
+        .then(listResources)
+}
+
+const listResources = (resources) => {
+    resources.map(renderResource)
+}
+
+const renderResource = (resource) => {
+    const resourceCard = createResourceCard(resource)
+    const resourceItem = document.createElement('li')
+    resourceItem.appendChild(resourceCard)
+    resourcesList.appendChild(resourceItem)
+}
+
+const createResourceCard = (resource) => {
+    const card = document.createElement('div')
+    card.classList.add('resource-card')
+    card.innerText = resource.name
+    card.setAttribute('data-link', resource.link)
+    createLinkEvent(card)
+    return card
+}
+
+const createLinkEvent = (resource) => {
+    resource.addEventListener('click', routeLink)
+}
+
+const routeLink = () => {
+    const link = event.target.dataset.link
+    window.open(link)
+}
+
+
 
 
 renderBrowse()

@@ -358,6 +358,7 @@ li div:after {
   
   li:hover div {
     padding-right: 25px;
+    background-color: rgba(196, 118, 92, 0.774);
   }
   
   li:hover div:after {
@@ -382,7 +383,7 @@ li div:after {
     border: 1px solid darkgrey;
     border-radius: 2px;
     padding: 75px;
-    background-color: rgba(196, 118, 92, 0.774);
+    background-color: rgba(214, 169, 156, 0.884);
 }
 
 .login-button {
