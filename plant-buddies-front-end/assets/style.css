@@ -84,7 +84,6 @@ main {
     width: 40%;
     position: absolute;
     bottom: 0px;
-    /* right: 3px; */
 }
 
 #branch2-image {
@@ -223,7 +222,6 @@ main {
     text-align: center;
     line-height: 25px;
     background-color:  rgb(162, 150, 228);
-    /* box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20); */
     border-style: solid;
     border-width: 0.5px;
     border-radius: 2px;
@@ -309,7 +307,6 @@ main {
 
 #resources-page {
     display: none;
-    /* background-color: rgba(209, 164, 113, 0.87); */
 }
 
 .resources {
@@ -369,7 +366,6 @@ li div:after {
 #login-user {
     display: none;
     height: 800%;
-    /* object-fit: cover; */
     background-image: url('/assets/images/leaves-background.png');
     background-position: center;
     background-repeat: no-repeat;

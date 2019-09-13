@@ -5,7 +5,6 @@ const usersURL = 'http://localhost:3000/users/'
 let currentUser = null
 let loggedIn = false
 
-// const foliageURL = 'https://www.thegardenglove.com/wp-content/uploads/2014/05/img_0585.jpg'
 const leafs1 = 'assets/images/leafs1.jpeg'
 const leafs2 = 'assets/images/leafs2.jpeg'
 const leafs3 = 'assets/images/leafs3.jpeg'
@@ -101,7 +100,6 @@ const renderCard = (post) => {
     card.appendChild(cardImg)
     postArea.prepend(card)
     addCardEvent(card)
-    // browsePage.style.display='none'
 }
 
 function getRandomImage(imgAr, path) {
@@ -120,8 +118,6 @@ const openModal = () => {
     postModal.style.display = 'block'
     if(event.target.tagName === 'DIV'){
         cardID = event.target.dataset.id
-    // } else if (event.target.tagName === 'P'){
-    //     cardID = event.target.parentNode.dataset.id
     } else if (event.target.tagName === 'H5'){
         cardID = event.target.parentNode.dataset.id
     } else if (event.target.tagName === 'IMG'){
@@ -330,21 +326,10 @@ const createNewPost = () => {
         })
     }
 
-    // if (postTitle.value.length == nil) {
-    //     alert("Title cannot be longer than 30 characters")
-    // } else if (postTitle.value.length == nil) {
-    //     alert("Must provide a title")
-    // } else if (postLocation.value.length > 15) {
-    //     alert("Location cannot be longer than 15 characters")
-    // } else if (postLocation.value.length == nil) {
-    //     alert ("Must provide a location")
-    // } else {
+    // add validations
     fetch(postsURL, configCreate)
         .then(response => response.json())
         .then(createCardFromForm)
-    // }
-
-   
 }
 
 const createCardFromForm = (post) => {
@@ -398,7 +383,7 @@ const loginUser = () => {
     const formDataLogin = new FormData(loginForm)
     currentUser = formDataLogin.get('username')
     const password = formDataLogin.get('password')
-    // console.log(currentUser)
+    
     fetch(usersURL)
         .then(response => response.json())
         .then(listUsers)  //find user and open profile
@@ -467,7 +452,6 @@ const logoutUser = () => {
 }
 
 const createNewUser = () => {
-    // console.log(event.target)
     const formDataSignup = new FormData(loginForm)
     const usernameInput = formDataSignup.get('username')
     const passwordInput = formDataSignup.get('password')
