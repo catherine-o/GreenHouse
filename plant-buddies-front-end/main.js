@@ -1,5 +1,9 @@
 const postsURL = 'http://localhost:3000/posts/'
 const resourcesURL = 'http://localhost:3000/resources'
+const usersURL = 'http://localhost:3000/users/'
+
+let currentUser = null
+let logginIn = false
 
 // const foliageURL = 'https://www.thegardenglove.com/wp-content/uploads/2014/05/img_0585.jpg'
 const leafs1 = 'assets/images/leafs1.jpeg'
@@ -31,6 +35,7 @@ const editPostForm = document.querySelector('#edit-post-form')
 const resourcesPage = document.querySelector('#resources-page')
 const resourcesList = document.querySelector('#resources-list')
 const loginPage = document.querySelector('#login-user')
+const loginForm = document.querySelector('#login-form')
 
 const postModal = document.querySelector('.modal')
 const closeModalButton = document.querySelector('.modalCloseButton')
@@ -44,6 +49,7 @@ const modalImage = document.querySelector('.modal-image')
 const contactButton = document.querySelector('.modal-contact-button')
 const editPostButton = document.querySelector('.modal-edit-button')
 const deletePostButton = document.querySelector('.modal-delete-button')
+const newUserButton = document.querySelector('#new-user')
 
 
 const renderBrowse = () => {
@@ -274,6 +280,7 @@ const showLogin = () => {
     browsePage.style.display = 'none'
     editPage.style.display = 'none'
     resourcesPage.style.display = 'none'
+    createLoginEvents()
 }
 
 const addCreateEvent = () => {
@@ -298,9 +305,22 @@ const createNewPost = () => {
             'description': postDescription
         })
     }
+
+    // if (postTitle.value.length == nil) {
+    //     alert("Title cannot be longer than 30 characters")
+    // } else if (postTitle.value.length == nil) {
+    //     alert("Must provide a title")
+    // } else if (postLocation.value.length > 15) {
+    //     alert("Location cannot be longer than 15 characters")
+    // } else if (postLocation.value.length == nil) {
+    //     alert ("Must provide a location")
+    // } else {
     fetch(postsURL, configCreate)
         .then(response => response.json())
         .then(createCardFromForm)
+    // }
+
+   
 }
 
 const createCardFromForm = (post) => {
@@ -344,7 +364,60 @@ const routeLink = () => {
     window.open(link)
 }
 
+const createLoginEvents = () => {
+    loginForm.addEventListener('submit', loginUser)
+    newUserButton.addEventListener('click', createNewUser)
+}
 
+const loginUser = () => {
+    event.preventDefault()
+    const formDataLogin = new FormData(loginForm)
+    currentUser = formDataLogin.get('username')
+    const password = formDataLogin.get('password')
+    console.log(currentUser)
+    fetch(usersURL)
+        .then(response => response.json())
+        .then(listUsers)  //find user and open profile
+}
 
+const listUsers = (users) => {
+    users.map(selectUser)
+}
+
+const selectUser = (user) => {
+    if (user.username === currentUser){
+        currentUser = user
+        console.log(user)
+        // renderProfile(user)
+    } else {
+        loginForm.reset()
+    }
+}
+
+const renderProfile = (user) => {
+    
+}
+
+const createNewUser = () => {
+    // console.log(event.target)
+    const formDataSignup = new FormData(loginForm)
+    const usernameInput = formDataSignup.get('username')
+    const passwordInput = formDataSignup.get('password')
+    const configSignup = {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            'username': usernameInput,
+            'password': passwordInput
+        })
+    }
+    fetch(usersURL, configSignup)
+        .then(response => response.json())
+        .then(json => console.log(json)) //open profile
+
+}
 
 renderBrowse()
