@@ -16,7 +16,7 @@ class PostsController < ApplicationController
         if post.save
             render json: post
         else
-            binding.pry
+           puts "Cannot be longer than 30 characters"
         end
     end
 

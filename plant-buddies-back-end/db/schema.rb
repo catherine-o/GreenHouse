@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_09_12_161624) do
 
-  create_table "homes", force: :cascade do |t|
-    t.string "name"
-    t.string "bio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -30,6 +23,16 @@ ActiveRecord::Schema.define(version: 2019_09_12_161624) do
   create_table "resources", force: :cascade do |t|
     t.string "name"
     t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "name"
+    t.string "password"
+    t.string "bio"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

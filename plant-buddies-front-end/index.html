@@ -32,7 +32,13 @@
             <a class="nav-link" id="resources">Resources</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" id="profile">My Profile</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" id="login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="logout">Logout</a>
           </li>
         </ul>
       <form class="form-inline my-2 my-lg-0">
@@ -50,12 +56,11 @@
           <a class="weatherwidget-io" id="weather" href="https://forecast7.com/en/39d74n104d99/denver/?unit=us" 
               data-label_1="DENVER" data-label_2="WEATHER" data-font="Arial Black" data-icons="Climacons" 
                   data-days="5" data-theme="beige" >DENVER WEATHER</a>
-          <script>
+          <script> //weather
               !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id))
                   {js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';
                       fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
           </script>
-          <!-- <h2 class="page-title">Browse posts:</h2> -->
           <div id="post-grid">
               <!-- Posts go here-->
           </div>
@@ -153,28 +158,41 @@
 
     <!-- LOGIN PAGE -->
     <div id="login-user">
-        <div class="form-group" id="login-form">
-            <!-- <label class="col-form-label col-form-label-lg" for="username">Username</label> -->
-            <input class="form-control form-control-lg" type="text" placeholder="Username" id="username">
-            <input class="form-control form-control-lg" type="text" placeholder="❃ ❃ ❃ ❃ ❃" id="password">
-            <button type="button" class="login-button">New User</button>
-            <button type="button" class="login-button">Login</button>
+        <form class="form-group" id="login-form">
+            <input class="form-control form-control-lg" type="text" placeholder="Username" name="username">
+            <input class="form-control form-control-lg" type="text" placeholder="❃ ❃ ❃ ❃ ❃" name="password">
+            <button type="button" class="login-button" id="new-user">New User</button>
+            <button type="submit" class="login-button" id="login">Login</button>
+        </form>
+    </div>
+
+
+    <!-- PROFILE PAGE -->
+    <div id="profile-page">
+        <div class="profile-grid">
+          <div class="profile-photo-box">
+              <img src="https://tinyurl.com/y5gp2urs" id="profile-photo" alt="profile photo">
+          </div>
+          <div class="profile-info">
+              <h2 class="profile-name">Name</h2>
+              <p class="profile-bio"></p>
+              <p>Lorem ipsum dolor amet offal leggings dreamcatcher, 
+                tumblr PBR&B fam succulents hexagon actually street art. 
+                Palo santo shabby chic iPhone VHS viral letterpress. Woke iPhone 
+                tumblr, hoodie retro activated charcoal jianbing gastropub vinyl 
+                viral vape normcore flexitarian chambray asymmetrical. PBR&B helvetica 
+                flexitarian, forage shaman ramps drinking vinegar fixie leggings scenester 
+                iceland selvage pitchfork vaporware hashtag. Distillery lumbersexual hashtag 
+                selvage tumeric vinyl tbh photo booth.</p>
+          </div>
         </div>
     </div>
     
 
-      
   </main>
 
 
     
-
-
-
-
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
-    <script src ="main.js"></script>
+  <script src ="main.js"></script>
 </body>
 </html>

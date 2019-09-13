@@ -1,7 +1,10 @@
 const postsURL = 'http://localhost:3000/posts/'
 const resourcesURL = 'http://localhost:3000/resources'
+const usersURL = 'http://localhost:3000/users/'
 
-// const foliageURL = 'https://www.thegardenglove.com/wp-content/uploads/2014/05/img_0585.jpg'
+let currentUser = null
+let loggedIn = false
+
 const leafs1 = 'assets/images/leafs1.jpeg'
 const leafs2 = 'assets/images/leafs2.jpeg'
 const leafs3 = 'assets/images/leafs3.jpeg'
@@ -31,6 +34,8 @@ const editPostForm = document.querySelector('#edit-post-form')
 const resourcesPage = document.querySelector('#resources-page')
 const resourcesList = document.querySelector('#resources-list')
 const loginPage = document.querySelector('#login-user')
+const loginForm = document.querySelector('#login-form')
+const profilePage = document.querySelector('#profile-page')
 
 const postModal = document.querySelector('.modal')
 const closeModalButton = document.querySelector('.modalCloseButton')
@@ -44,6 +49,15 @@ const modalImage = document.querySelector('.modal-image')
 const contactButton = document.querySelector('.modal-contact-button')
 const editPostButton = document.querySelector('.modal-edit-button')
 const deletePostButton = document.querySelector('.modal-delete-button')
+const newUserButton = document.querySelector('#new-user')
+
+const profilePhoto = document.querySelector('#profile-photo')
+const profileName = document.querySelector('.profile-name')
+const profileBio = document.querySelector('.profile-bio')
+const loginLink = document.querySelector('#login')
+const logoutLink = document.querySelector('#logout')
+const createPostLink = document.querySelector('#create')
+const profileLink = document.querySelector('#profile')
 
 
 const renderBrowse = () => {
@@ -84,9 +98,8 @@ const renderCard = (post) => {
     cardImg.setAttribute('alt', 'plant photo')
     
     card.appendChild(cardImg)
-    postArea.appendChild(card)
+    postArea.prepend(card)
     addCardEvent(card)
-    // browsePage.style.display='none'
 }
 
 function getRandomImage(imgAr, path) {
@@ -105,8 +118,6 @@ const openModal = () => {
     postModal.style.display = 'block'
     if(event.target.tagName === 'DIV'){
         cardID = event.target.dataset.id
-    // } else if (event.target.tagName === 'P'){
-    //     cardID = event.target.parentNode.dataset.id
     } else if (event.target.tagName === 'H5'){
         cardID = event.target.parentNode.dataset.id
     } else if (event.target.tagName === 'IMG'){
@@ -131,6 +142,14 @@ const renderModalText = (cardID) => {
     modalImage.src = modalCard.children[2].src
     modalImage.classList.add('modal-image')
 
+
+    if (loggedIn === true) {
+        editPostButton.style.display = 'inline-block'
+        deletePostButton.style.display = 'inline-block'
+    } else {
+        editPostButton.style.display = 'none'
+        deletePostButton.style.display = 'none'
+    }
     deletePostButton.setAttribute('data-delete-id', cardID)
 }
 
@@ -237,8 +256,12 @@ const switchPage = () => {
         showCreate()
     } else if(id === 'resources'){
         showResources()
+    } else if(id === 'profile'){
+        showProfilePage()
     } else if (id === 'login'){
         showLogin()
+    } else if (id === 'logout'){
+        logoutUser()
     }
 }
 
@@ -248,7 +271,7 @@ const showBrowse = () => {
     editPage.style.display = 'none'
     resourcesPage.style.display = 'none'
     loginPage.style.display = 'none'
-    document.location.reload()
+    profilePage.style.display = 'none'
 }
 
 const showCreate = () => {
@@ -257,6 +280,7 @@ const showCreate = () => {
     editPage.style.display = 'none'
     resourcesPage.style.display = 'none'
     loginPage.style.display = 'none'
+    profilePage.style.display = 'none'
     addCreateEvent()
 }
 
@@ -266,6 +290,52 @@ const showResources = () => {
     browsePage.style.display = 'none'
     editPage.style.display = 'none'
     loginPage.style.display = 'none'
+    profilePage.style.display = 'none'
+}
+
+const showLogin = () => {
+    loginPage.style.display = 'block'
+    createPage.style.display = 'none'
+    browsePage.style.display = 'none'
+    editPage.style.display = 'none'
+    resourcesPage.style.display = 'none'
+    profilePage.style.display = 'none'
+    createLoginEvents()
+}
+
+const addCreateEvent = () => {
+    createPostForm.addEventListener('submit', createNewPost)
+}
+
+const createNewPost = () => {
+    event.preventDefault()
+    const formDataCreate = new FormData(event.target)
+    const postTitle = formDataCreate.get('post-title')
+    const postLocation = formDataCreate.get('post-location')
+    const postDescription = formDataCreate.get('post-description')
+    const configCreate = {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            'title': postTitle,
+            'location': postLocation,
+            'description': postDescription
+        })
+    }
+
+    // add validations
+    fetch(postsURL, configCreate)
+        .then(response => response.json())
+        .then(createCardFromForm)
+}
+
+const createCardFromForm = (post) => {
+    browsePage.style.display = 'block'
+    createPage.style.display = 'none'
+    renderCard(post)
 }
 
 const getResources = () => {
@@ -303,46 +373,103 @@ const routeLink = () => {
     window.open(link)
 }
 
-const showLogin = () => {
-    loginPage.style.display = 'block'
-    createPage.style.display = 'none'
+const createLoginEvents = () => {
+    loginForm.addEventListener('submit', loginUser)
+    newUserButton.addEventListener('click', createNewUser)
+}
+
+const loginUser = () => {
+    event.preventDefault()
+    const formDataLogin = new FormData(loginForm)
+    currentUser = formDataLogin.get('username')
+    const password = formDataLogin.get('password')
+    
+    fetch(usersURL)
+        .then(response => response.json())
+        .then(listUsers)  //find user and open profile
+}
+
+const listUsers = (users) => {
+    users.map(selectUser)
+}
+
+const selectUser = (user) => {
+    if (user.username === currentUser){
+        currentUser = user
+        showProfilePage(user)
+    } else {
+        loginForm.reset()
+    }
+}
+
+const showProfilePage = (user) => {
+    profilePage.style.display = 'block'
     browsePage.style.display = 'none'
+    createPage.style.display = 'none'
     editPage.style.display = 'none'
     resourcesPage.style.display = 'none'
+    loginPage.style.display = 'none'
+    renderProfile(user)
 }
 
-const addCreateEvent = () => {
-    createPostForm.addEventListener('submit', createNewPost)
+const renderProfile = (user) => {
+    loggedIn = true
+    loginLink.style.display = 'none'
+    logoutLink.style.display = 'inline-block'
+    createPostLink.style.display = 'inline-block'
+    profileLink.style.display = 'inline-block'
+    renderPhoto(user)
+    renderName(user)
+    renderBio(user)
 }
 
-const createNewPost = () => {
-    event.preventDefault()
-    const formDataCreate = new FormData(event.target)
-    const postTitle = formDataCreate.get('post-title')
-    const postLocation = formDataCreate.get('post-location')
-    const postDescription = formDataCreate.get('post-description')
-    const configCreate = {
+const renderPhoto = (user) => {
+    user.photo
+        ? profilePhoto.src = user.photo
+        : profilePhoto.src = "https://tinyurl.com/y5gp2urs"
+}
+
+const renderName = (user) => {
+    user.name
+        ? profileName.innerText = user.name
+        : profileName.innerText = user.username
+}
+
+const renderBio = (user) => {
+    user.bio
+        ? profileBio.innerText = user.bio
+        : profileBio.innerText = "Tell us about yourself!"
+}
+
+const logoutUser = () => {
+    loggedIn = false
+    currentUser = null
+    logoutLink.style.display = 'none'
+    loginLink.style.display = 'inline-block'
+    createPostLink.style.display = 'none'
+    profileLink.style.display = 'none'
+    showLogin()
+}
+
+const createNewUser = () => {
+    const formDataSignup = new FormData(loginForm)
+    const usernameInput = formDataSignup.get('username')
+    const passwordInput = formDataSignup.get('password')
+    const configSignup = {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            'title': postTitle,
-            'location': postLocation,
-            'description': postDescription
+            'username': usernameInput,
+            'password': passwordInput
         })
     }
-    fetch(postsURL, configCreate)
+    fetch(usersURL, configSignup)
         .then(response => response.json())
-        .then(createCardFromForm)
-}
+        .then(selectUser) //open profile
 
-const createCardFromForm = (post) => {
-    browsePage.style.display = 'block'
-    createPage.style.display = 'none'
-    renderCard(post)
 }
-
 
 renderBrowse()

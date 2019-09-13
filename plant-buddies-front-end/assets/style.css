@@ -84,7 +84,6 @@ main {
     width: 40%;
     position: absolute;
     bottom: 0px;
-    /* right: 3px; */
 }
 
 #branch2-image {
@@ -223,7 +222,6 @@ main {
     text-align: center;
     line-height: 25px;
     background-color:  rgb(162, 150, 228);
-    /* box-shadow: 3px 3px 5px rgba(71, 77, 71, 0.20); */
     border-style: solid;
     border-width: 0.5px;
     border-radius: 2px;
@@ -309,7 +307,6 @@ main {
 
 #resources-page {
     display: none;
-    /* background-color: rgba(209, 164, 113, 0.87); */
 }
 
 .resources {
@@ -358,6 +355,7 @@ li div:after {
   
   li:hover div {
     padding-right: 25px;
+    background-color: rgba(196, 118, 92, 0.774);
   }
   
   li:hover div:after {
@@ -368,7 +366,6 @@ li div:after {
 #login-user {
     display: none;
     height: 800%;
-    /* object-fit: cover; */
     background-image: url('/assets/images/leaves-background.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -382,7 +379,7 @@ li div:after {
     border: 1px solid darkgrey;
     border-radius: 2px;
     padding: 75px;
-    background-color: rgba(196, 118, 92, 0.774);
+    background-color: rgba(214, 169, 156, 0.884);
 }
 
 .login-button {
@@ -401,4 +398,39 @@ li div:after {
 
 .login-button:hover {
     box-shadow: 0px 0px 0px;
+}
+
+#profile-page {
+    display: none;
+}
+
+.profile-grid {
+    display: flex;
+}
+
+.profile-photo-box {
+    width: 200%;
+    margin: 30px;
+    text-align: right;
+}
+
+#profile-photo {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    margin: 30px 30px 30px 0px;
+}
+
+#create {
+    display: none;
+}
+
+#profile {
+    display: none;
+}
+
+#logout {
+    display: none;
 }
