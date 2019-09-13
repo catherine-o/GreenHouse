@@ -145,6 +145,14 @@ const renderModalText = (cardID) => {
     modalImage.src = modalCard.children[2].src
     modalImage.classList.add('modal-image')
 
+
+    if (loggedIn === true) {
+        editPostButton.style.display = 'inline-block'
+        deletePostButton.style.display = 'inline-block'
+    } else {
+        editPostButton.style.display = 'none'
+        deletePostButton.style.display = 'none'
+    }
     deletePostButton.setAttribute('data-delete-id', cardID)
 }
 
@@ -265,7 +273,6 @@ const showBrowse = () => {
     resourcesPage.style.display = 'none'
     loginPage.style.display = 'none'
     profilePage.style.display = 'none'
-    document.location.reload()
 }
 
 const showCreate = () => {
