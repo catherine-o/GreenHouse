@@ -412,9 +412,15 @@ li div:after {
     display: flex;
 }
 
-#profile-photo {
-    max-width: 40%;
+.profile-photo-box {
+    width: 200%;
     margin: 30px;
+    text-align: right;
+}
+
+#profile-photo {
+    max-width: 100%;
+    object-fit: cover;
 }
 
 .profile-info {

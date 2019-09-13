@@ -433,8 +433,27 @@ const renderProfile = (user) => {
     logoutLink.style.display = 'inline-block'
     createPostLink.style.display = 'inline-block'
     profileLink.style.display = 'inline-block'
-    profilePhoto.src = user.photo
-    profileName.innerText = user.name
+    renderPhoto(user)
+    renderName(user)
+    renderBio(user)
+}
+
+const renderPhoto = (user) => {
+    user.photo
+        ? profilePhoto.src = user.photo
+        : profilePhoto.src = "https://tinyurl.com/y5gp2urs"
+}
+
+const renderName = (user) => {
+    user.name
+        ? profileName.innerText = user.name
+        : profileName.innerText = user.username
+}
+
+const renderBio = (user) => {
+    user.bio
+        ? profileBio.innerText = user.bio
+        : profileBio.innerText = "Tell us about yourself!"
 }
 
 const logoutUser = () => {
@@ -465,7 +484,7 @@ const createNewUser = () => {
     }
     fetch(usersURL, configSignup)
         .then(response => response.json())
-        .then(json => console.log(json)) //open profile
+        .then(selectUser) //open profile
 
 }
 
