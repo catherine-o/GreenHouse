@@ -5,25 +5,35 @@ const usersURL = 'http://localhost:3000/users/'
 let currentUser = null
 let loggedIn = false
 
-const leafs1 = 'assets/images/leafs1.jpeg'
-const leafs2 = 'assets/images/leafs2.jpeg'
-const leafs3 = 'assets/images/leafs3.jpeg'
-const foliage1 = 'assets/images/foliage1.jpg'
-const foliage2 = 'assets/images/foliage2.jpg'
-const foliage3 = 'assets/images/foliage3.jpg'
-const flower1 = 'assets/images/flower1.jpg'
-const flower2 = 'assets/images/flower2.jpg'
-const garden1 = 'assets/images/garden1.jpg'
-const garden2 = 'assets/images/garden2.jpg'
-const garden3 = 'assets/images/garden3.jpg'
-const indoor1 = 'assets/images/indoor1.jpg'
-const indoor2 = 'assets/images/indoor2.jpg'
-const indoor3 = 'assets/images/indoor3.jpg'
-const indoor4 = 'assets/images/indoor4.jpg'
-const indoor5 = 'assets/images/indoor5.jpg'
-const patio1 = 'assets/images/patio1.jpg'
-const patio2 = 'assets/images/patio2.jpg'
-const plantImages = [leafs1, leafs2, leafs3, foliage1, foliage2, foliage3, flower1, flower2, garden1, garden2, garden3, indoor1, indoor2, indoor3, indoor4, indoor5, patio1, patio2]
+const plants1 = 'assets/images/plants/plant1.jpg'
+const plants2 = 'assets/images/plants/plant2.jpeg'
+const plants3 = 'assets/images/plants/plant3.jpeg'
+const plants4 = 'assets/images/plants/plant4.jpeg'
+const plants5 = 'assets/images/plants/plant5.jpeg'
+const plants6 = 'assets/images/plants/plant6.jpeg'
+const plants7 = 'assets/images/plants/plant7.jpeg'
+const plants8 = 'assets/images/plants/plant8.jpeg'
+const plants9 = 'assets/images/plants/plant9.jpeg'
+const plants10 = 'assets/images/plants/plant10.jpeg'
+const plants11 = 'assets/images/plants/plant11.jpeg'
+const plants12 = 'assets/images/plants/plant12.jpeg'
+const plants13 = 'assets/images/plants/plant13.jpeg'
+const plants14 = 'assets/images/plants/plant14.jpeg'
+const plants15 = 'assets/images/plants/plant15.jpeg'
+const plants16 = 'assets/images/plants/plant16.jpeg'
+const plants17 = 'assets/images/plants/plant17.jpeg'
+const plants18 = 'assets/images/plants/plant18.jpeg'
+const plants19 = 'assets/images/plants/plant19.jpeg'
+const plants20 = 'assets/images/plants/plant20.jpeg'
+const plants21 = 'assets/images/plants/plant21.jpeg'
+const plants22 = 'assets/images/plants/plant22.jpeg'
+const plants23 = 'assets/images/plants/plant23.jpeg'
+const plants24 = 'assets/images/plants/plant24.jpeg'
+const plants25 = 'assets/images/plants/plant25.jpeg'
+const plantImages = [plants1, plants2, plants3, plants4, plants5, plants6,
+    plants7, plants8, plants9, plants10, plants11, plants12, plants13, plants14,
+    plants15, plants16, plants17, plants18, plants19, plants20, plants21, plants22,
+    plants23, plants24, plants25]
 
 const navList = document.querySelector('#nav-ul')
 const browsePage = document.querySelector('#show-posts')
