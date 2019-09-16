@@ -23,6 +23,15 @@ and edit or delete a post.
 ## Intro Video
 [GreenHouse on YouTube](https://www.youtube.com) Coming soon...
 
+Any user/landing page:
+
+![](https://media.giphy.com/media/H7NGT8PAUoKL73HvWH/giphy.gif)
+
+
+Creating a post as a logged in user:
+
+![](https://media.giphy.com/media/JrRfppHj5B0DU6wmJI/giphy.gif)
+
 ## Technologies
 * JavaScript
 * Ruby on Rails - version 5.2.3
