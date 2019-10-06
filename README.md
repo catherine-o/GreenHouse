@@ -21,7 +21,8 @@ create a post to seek a plant helper,
 and edit or delete a post.
 
 ## Intro Video
-[GreenHouse on YouTube](https://www.youtube.com) Coming soon...
+[GreenHouse on YouTube](https://www.youtube.com/watch?v=-JK8fxub4ek&feature=youtu.be)
+
 
 Any user/landing page:
 
@@ -124,4 +125,4 @@ Created by [Catherine O'Hara](www.linkedin.com/in/catherine-o)
 Feel free to contact me!
 
 ## License
-[Click to view](https://github.com/catherine-o/GreenHouse/blob/master/LICENSE)
+[GPL v3.0](https://github.com/catherine-o/GreenHouse/blob/master/LICENSE)
