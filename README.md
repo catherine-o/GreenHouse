@@ -120,7 +120,7 @@ Project is: at a demonstrable product. In the works...
 The inspiration for GreenHouse came from my own love of plants and nature, as well as the popularized 'on-demand' service apps.
 
 ## Contact
-Created by [Catherine O'Hara](www.linkedin.com/in/catherine-o)
+Created by [Catherine O'Hara](https://www.linkedin.com/in/catherine-o/)
 
 Feel free to contact me!
 
