@@ -5,35 +5,15 @@ const usersURL = 'http://localhost:3000/users/'
 let currentUser = null
 let loggedIn = false
 
-const plants1 = 'assets/images/plants/plant1.jpg'
-const plants2 = 'assets/images/plants/plant2.jpeg'
-const plants3 = 'assets/images/plants/plant3.jpeg'
-const plants4 = 'assets/images/plants/plant4.jpeg'
-const plants5 = 'assets/images/plants/plant5.jpeg'
-const plants6 = 'assets/images/plants/plant6.jpeg'
-const plants7 = 'assets/images/plants/plant7.jpeg'
-const plants8 = 'assets/images/plants/plant8.jpeg'
-const plants9 = 'assets/images/plants/plant9.jpeg'
-const plants10 = 'assets/images/plants/plant10.jpeg'
-const plants11 = 'assets/images/plants/plant11.jpeg'
-const plants12 = 'assets/images/plants/plant12.jpeg'
-const plants13 = 'assets/images/plants/plant13.jpeg'
-const plants14 = 'assets/images/plants/plant14.jpeg'
-const plants15 = 'assets/images/plants/plant15.jpeg'
-const plants16 = 'assets/images/plants/plant16.jpeg'
-const plants17 = 'assets/images/plants/plant17.jpeg'
-const plants18 = 'assets/images/plants/plant18.jpeg'
-const plants19 = 'assets/images/plants/plant19.jpeg'
-const plants20 = 'assets/images/plants/plant20.jpeg'
-const plants21 = 'assets/images/plants/plant21.jpeg'
-const plants22 = 'assets/images/plants/plant22.jpeg'
-const plants23 = 'assets/images/plants/plant23.jpeg'
-const plants24 = 'assets/images/plants/plant24.jpeg'
-const plants25 = 'assets/images/plants/plant25.jpeg'
-const plantImages = [plants1, plants2, plants3, plants4, plants5, plants6,
-    plants7, plants8, plants9, plants10, plants11, plants12, plants13, plants14,
-    plants15, plants16, plants17, plants18, plants19, plants20, plants21, plants22,
-    plants23, plants24, plants25]
+function createImgArray(number) {
+    let photoArray = []
+    for (let i = 1; i <= +number; i++) {
+        photoArray.push(`assets/images/plants/plant${i}.jpeg`)
+    }
+    return photoArray
+}
+
+const plantImages = createImgArray(25)
 
 const navList = document.querySelector('#nav-ul')
 const browsePage = document.querySelector('#show-posts')
